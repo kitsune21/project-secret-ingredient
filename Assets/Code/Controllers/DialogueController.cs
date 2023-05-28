@@ -12,12 +12,14 @@ public class DialogueController : MonoBehaviour
     public TMP_Text otherText;
     public float durationLength;
     public float startBuffer;
+    private Character characterObject;
     
-    public void StartConversation(Dialogue newDialogue)
+    public void StartConversation(Character newCharacter)
     {
+        characterObject = newCharacter;
         clearText();
         dialogueTextObject.SetActive(true);
-        currentDialogue = newDialogue;
+        currentDialogue = newCharacter.myDialogue;
         currentLineIndex = 0;
         DisplayCurrentLine();
     }
@@ -30,6 +32,7 @@ public class DialogueController : MonoBehaviour
             playerText.text = currentLine.text;
         } else {
             otherText.text = currentLine.text;
+            otherText.color = characterObject.dialogueColor;
         }
         float dialogueDuration = (startBuffer + durationLength * currentLine.text.Length) / 1000;
         StartCoroutine(StartTimer(dialogueDuration));

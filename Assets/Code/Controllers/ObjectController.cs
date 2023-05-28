@@ -51,7 +51,7 @@ public class ObjectController : MonoBehaviour {
                     Destroy(gameObject);
                 }
                 if(myCharacter) {
-                    player.GetComponentInChildren<DialogueController>().StartConversation(myCharacter.myDialogue);
+                    player.GetComponentInChildren<DialogueController>().StartConversation(myCharacter);
                     isHovering = false;
                     isClicked = false;
                 }

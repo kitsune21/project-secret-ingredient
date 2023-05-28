@@ -15,3 +15,4 @@ MonoBehaviour:
   id: 1
   characterName: PurpleBoxGuy
   myDialogue: {fileID: 11400000, guid: b5464f812b846744192fd6319fbcc201, type: 2}
+  dialogueColor: {r: 0.37189415, g: 0, b: 0.3962264, a: 1}
