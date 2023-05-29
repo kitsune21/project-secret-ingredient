@@ -5,7 +5,7 @@ public class DialogueOption : ScriptableObject
 {
     public int id;
     [TextArea(3, 10)]
-    public string optionText; // The text of the dialogue option
+    public string optionText;
     
-    public Dialogue nextConversation; // The conversation to proceed to if this option is selected
+    public Dialogue nextDialogue;
 }

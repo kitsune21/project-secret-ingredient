@@ -11,7 +11,6 @@ public class ObjectController : MonoBehaviour {
     private bool isHovering = false;
     private InteractableTextController interactableTextController;
     private GameObject player;
-
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         interactableTextController = GameObject.FindGameObjectWithTag("InteractableText").GetComponent<InteractableTextController>();
@@ -22,7 +21,9 @@ public class ObjectController : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-        isHovering = true;
+        if(PlayerStateController.Instance.GetPlayerState() == PlayerState.Playing) {
+            isHovering = true;
+        }
     }
 
     private void OnMouseExit()

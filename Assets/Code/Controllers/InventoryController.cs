@@ -16,7 +16,13 @@ public class InventoryController : MonoBehaviour
 
     void Update() {
         if (Input.GetMouseButtonDown(1)) {
-            inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+            if(PlayerStateController.Instance.GetPlayerState() == PlayerState.Playing) {
+                inventoryPanel.SetActive(true); 
+                PlayerStateController.Instance.UpdatePlayerState(PlayerState.InInventory);
+            } else if(PlayerStateController.Instance.GetPlayerState() == PlayerState.InInventory) {
+                inventoryPanel.SetActive(false);
+                PlayerStateController.Instance.UpdatePlayerState(PlayerState.Playing);
+            }
         }
     }
     

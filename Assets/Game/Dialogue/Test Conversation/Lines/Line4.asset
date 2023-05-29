@@ -15,4 +15,8 @@ MonoBehaviour:
   id: 4
   speakerId: 1
   text: I suppose to make dumb jokes like this one.
-  options: []
+  options:
+  - {fileID: 11400000, guid: 7459712e9d2f6fd4e92888b3365f1b5a, type: 2}
+  - {fileID: 11400000, guid: e5d3be87a9f64b442bd361aeaa77763f, type: 2}
+  - {fileID: 11400000, guid: 9e9850f48abb18b409c08c5ffd036828, type: 2}
+  - {fileID: 11400000, guid: 1f499f41862ccb240835911b2286615f, type: 2}
