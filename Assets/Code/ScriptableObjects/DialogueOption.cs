@@ -6,6 +6,7 @@ public class DialogueOption : ScriptableObject
     public int id;
     [TextArea(3, 10)]
     public string optionText;
+    public Item requiredItem;
     
     public Dialogue nextDialogue;
 }

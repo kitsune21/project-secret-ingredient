@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834ee130117ff1242a2be889baab0479, type: 3}
-  m_Name: PurpleBoxGuy
+  m_Script: {fileID: 11500000, guid: 4aa46dc77cde58a4ba912ca15325123a, type: 3}
+  m_Name: HereItIs
   m_EditorClassIdentifier: 
   id: 1
-  characterName: PurpleBoxGuy
-  myDialogue: {fileID: 11400000, guid: f7149161453d0ed4f8e0ff1d5f5d71a4, type: 2}
-  dialogueColor: {r: 0.37189415, g: 0, b: 0.3962264, a: 1}
+  optionText: Yes, here it is!
+  requiredItem: {fileID: 11400000, guid: 0c8b4ac48938f1f41b257b990259102c, type: 2}
+  nextDialogue: {fileID: 11400000, guid: 3eac45ff435908d4380adabeb188d39d, type: 2}

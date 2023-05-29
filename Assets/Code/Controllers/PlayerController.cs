@@ -4,6 +4,8 @@ using UnityEngine.AI;
 public class PlayerController : MonoBehaviour {
     private NavMeshAgent navMeshAgent;
     private PlayerStateController playerState;
+    private InventoryController myInventory;
+    private DialogueController dialogueController;
 
     void Start() {
         navMeshAgent = GetComponent<NavMeshAgent>();

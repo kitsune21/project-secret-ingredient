@@ -9,4 +9,6 @@ public class DialogueLine : ScriptableObject
     public string text; // The actual dialogue text
     
     public DialogueOption[] options; // Array of dialogue options
+    public Item giveItem;
+    public Item takeItem;
 }

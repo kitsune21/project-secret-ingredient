@@ -11,6 +11,7 @@ public class ObjectController : MonoBehaviour {
     private bool isHovering = false;
     private InteractableTextController interactableTextController;
     private GameObject player;
+    public Item requiredItem;
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         interactableTextController = GameObject.FindGameObjectWithTag("InteractableText").GetComponent<InteractableTextController>();
@@ -46,8 +47,8 @@ public class ObjectController : MonoBehaviour {
             if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.5f) {
                 if(myItem) {
                     isClicked = false;
-                    player.GetComponentInChildren<InventoryController>().AddItem(myItem);
                     isHovering = false;
+                    player.GetComponentInChildren<InventoryController>().AddItem(myItem);
                     interactableTextController.UpdateMyText("");
                     Destroy(gameObject);
                 }
@@ -55,6 +56,12 @@ public class ObjectController : MonoBehaviour {
                     player.GetComponentInChildren<DialogueController>().StartConversation(myCharacter);
                     isHovering = false;
                     isClicked = false;
+                }
+                if(requiredItem) {
+                    if(player.GetComponentInChildren<InventoryController>().CheckIfPlayerHasItem(requiredItem)) {
+                        player.GetComponentInChildren<InventoryController>().RemoveItem(requiredItem);
+                        PlayerStateController.Instance.UpdatePlayerState(PlayerState.Victory);
+                    }
                 }
             }
         }

@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834ee130117ff1242a2be889baab0479, type: 3}
-  m_Name: PurpleBoxGuy
+  m_Script: {fileID: 11500000, guid: 5c39600bb7931074e9a4921489fb4413, type: 3}
+  m_Name: ThenGoFindSomething
   m_EditorClassIdentifier: 
   id: 1
-  characterName: PurpleBoxGuy
-  myDialogue: {fileID: 11400000, guid: f7149161453d0ed4f8e0ff1d5f5d71a4, type: 2}
-  dialogueColor: {r: 0.37189415, g: 0, b: 0.3962264, a: 1}
+  speakerId: 1
+  text: Then go find me something green.
+  options: []
+  giveItem: {fileID: 0}

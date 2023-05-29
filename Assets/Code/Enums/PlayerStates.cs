@@ -1,5 +1,6 @@
 public enum PlayerState {
     Playing,
     InDialogue,
-    InInventory
+    InInventory,
+    Victory
 }

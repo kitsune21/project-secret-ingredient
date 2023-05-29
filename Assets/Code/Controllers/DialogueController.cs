@@ -27,9 +27,9 @@ public class DialogueController : MonoBehaviour
     {
         playerState.UpdatePlayerState(PlayerState.InDialogue);
         characterObject = newCharacter;
+        currentDialogue = newCharacter.myDialogue;
         clearText();
         dialogueTextObject.SetActive(true);
-        currentDialogue = newCharacter.myDialogue;
         currentLineIndex = 0;
         DisplayCurrentLine();
     }
@@ -50,6 +50,12 @@ public class DialogueController : MonoBehaviour
         }
         float dialogueDuration = (startBuffer + durationLength * currentLine.text.Length) / 1000;
         StartCoroutine(StartTimer(dialogueDuration));
+        if(currentLine.giveItem) {
+            gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().AddItem(currentLine.giveItem);
+        }
+        if(currentLine.takeItem) {
+            gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().RemoveItem(currentLine.takeItem);
+        }
     }
     
     private void AdvanceToNextLine()
@@ -57,10 +63,7 @@ public class DialogueController : MonoBehaviour
         currentLineIndex++;
         if (currentLineIndex >= currentDialogue.lines.Length)
         {
-            clearText();
-            dialogueTextObject.SetActive(false);
-            StopAllCoroutines();
-            playerState.UpdatePlayerState(PlayerState.Playing);
+            EndConversation();
         }
         else
         {
@@ -84,21 +87,48 @@ public class DialogueController : MonoBehaviour
         for (int i = 0; i < currentLine.options.Length; i++)
         {
             DialogueOption optionText = currentLine.options[i];
-            GameObject newOption = Instantiate(optionsTextPrefab, optionsTextPanel.transform);
-            newOption.GetComponent<TMP_Text>().text = optionText.optionText;
-            newOption.GetComponent<OptionTextController>().myOptionIndex = i;
-            newOption.GetComponent<OptionTextController>().setDialogueController(this);
-            optionsTextList.Add(newOption);
+            if(!optionText.requiredItem) {
+                createOption(optionText, i);
+            } else {
+                if(gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().CheckIfPlayerHasItem(optionText.requiredItem)) {
+                    createOption(optionText, i);
+                }
+            }
         }
     }
 
     public void selectOption(int optionIndex) {
-        currentDialogue = currentLine.options[optionIndex].nextDialogue;
-        currentLineIndex = 0;
+        if(currentLine.options[optionIndex].nextDialogue) {
+            currentDialogue = currentLine.options[optionIndex].nextDialogue;
+            currentLineIndex = 0;
+            ClearOptions();
+            DisplayCurrentLine();
+            return;
+        }
+        EndConversation();
+    }
+
+    private void EndConversation() {
+        clearText();
+        dialogueTextObject.SetActive(false);
+        StopAllCoroutines();
+        playerState.UpdatePlayerState(PlayerState.Playing);
+        ClearOptions();
+    }
+
+    private void ClearOptions() {
         foreach(GameObject optionText in optionsTextList) {
             Destroy(optionText);
         }
         optionsTextList.Clear();
-        DisplayCurrentLine();
+    }
+
+    private void createOption(DialogueOption optionText, int i) {
+        GameObject newOption = Instantiate(optionsTextPrefab, optionsTextPanel.transform);
+        newOption.GetComponent<TMP_Text>().text = optionText.optionText;
+        newOption.GetComponent<OptionTextController>().myOptionIndex = i;
+        newOption.GetComponent<OptionTextController>().setDialogueController(this);
+        optionsTextList.Add(newOption);
     }
 }
+
