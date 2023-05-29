@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InteractableText
   - VictoryText
+  - DragItem
   layers:
   - Default
   - TransparentFX

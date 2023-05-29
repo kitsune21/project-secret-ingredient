@@ -22,7 +22,7 @@ public class ObjectController : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-        if(PlayerStateController.Instance.GetPlayerState() == PlayerState.Playing) {
+        if(PlayerStateController.Instance.GetPlayerState() == PlayerState.Playing || PlayerStateController.Instance.GetPlayerState() == PlayerState.DraggingInventory) {
             isHovering = true;
         }
     }
@@ -43,8 +43,9 @@ public class ObjectController : MonoBehaviour {
             }
         }
         if(isClicked) {
-            float distance = Vector3.Distance(gameObject.transform.position, player.transform.position);
-            if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.5f) {
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            Debug.Log(distance);
+            if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.5f && distance < 4f) {
                 if(myItem) {
                     isClicked = false;
                     isHovering = false;
@@ -53,7 +54,13 @@ public class ObjectController : MonoBehaviour {
                     Destroy(gameObject);
                 }
                 if(myCharacter) {
-                    player.GetComponentInChildren<DialogueController>().StartConversation(myCharacter);
+                    DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
+                    bool isGivenWantedItem = false;
+                    if(dragItemController.myItem && dragItemController.myItem.id == myCharacter.wantedItem.id) {
+                        isGivenWantedItem = true;
+                        dragItemController.StopDragging();
+                    }
+                    player.GetComponentInChildren<DialogueController>().StartConversation(myCharacter, isGivenWantedItem);
                     isHovering = false;
                     isClicked = false;
                 }
@@ -61,6 +68,10 @@ public class ObjectController : MonoBehaviour {
                     if(player.GetComponentInChildren<InventoryController>().CheckIfPlayerHasItem(requiredItem)) {
                         player.GetComponentInChildren<InventoryController>().RemoveItem(requiredItem);
                         PlayerStateController.Instance.UpdatePlayerState(PlayerState.Victory);
+                        DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
+                        if(dragItemController.myItem && dragItemController.myItem.id == requiredItem.id) {
+                            dragItemController.StopDragging();
+                        }
                     }
                 }
             }

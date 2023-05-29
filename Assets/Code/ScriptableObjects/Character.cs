@@ -7,5 +7,7 @@ public class Character : ScriptableObject
     public string characterName;
     public Dialogue myDialogue;
     public Color dialogueColor;
+    public Item wantedItem;
+    public Dialogue givenWantedItem;
 
 }

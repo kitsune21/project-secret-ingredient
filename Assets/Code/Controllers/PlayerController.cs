@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        if(playerState.GetPlayerState() == PlayerState.Playing) {
+        if(playerState.GetPlayerState() == PlayerState.Playing || playerState.GetPlayerState() == PlayerState.DraggingInventory) {
             if (Input.GetMouseButton(0)) {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 navMeshAgent.SetDestination(mousePosition);
@@ -24,13 +24,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     public float GetRemainingDistance() {
-        if(convertToXYOnly(gameObject.transform.position) != convertToXYOnly(navMeshAgent.destination)) {
+        if((Vector2)transform.position != (Vector2)navMeshAgent.destination) {
             return navMeshAgent.remainingDistance;
         }
         return 100;
-    }
-
-    private Vector2 convertToXYOnly(Vector3 myVector) {
-        return new Vector2(myVector.x, myVector.y);
     }
 }

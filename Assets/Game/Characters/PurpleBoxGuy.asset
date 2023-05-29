@@ -16,3 +16,5 @@ MonoBehaviour:
   characterName: PurpleBoxGuy
   myDialogue: {fileID: 11400000, guid: f7149161453d0ed4f8e0ff1d5f5d71a4, type: 2}
   dialogueColor: {r: 0.37189415, g: 0, b: 0.3962264, a: 1}
+  wantedItem: {fileID: 11400000, guid: 0c8b4ac48938f1f41b257b990259102c, type: 2}
+  givenWantedItem: {fileID: 11400000, guid: 089f88fb9cbf4b24f9025bbe55288748, type: 2}

@@ -9,7 +9,8 @@ public class InventoryController : MonoBehaviour
     public List<GameObject> currentItemsImagePanels = new List<GameObject>();
     public GameObject inventoryPanel;
     private Transform inventoryImagesPanel;
-    public GameObject inventoryImagePrefab;
+    public GameObject inventoryButtonPrefab;
+    public GameObject dragItem;
 
     void Start() {
         inventoryImagesPanel = inventoryPanel.transform.Find("InventoryImages");
@@ -17,9 +18,10 @@ public class InventoryController : MonoBehaviour
 
     void Update() {
         if (Input.GetMouseButtonDown(1)) {
-            if(PlayerStateController.Instance.GetPlayerState() == PlayerState.Playing) {
+            if(PlayerStateController.Instance.GetPlayerState() == PlayerState.Playing || PlayerStateController.Instance.GetPlayerState() == PlayerState.DraggingInventory) {
                 inventoryPanel.SetActive(true); 
                 PlayerStateController.Instance.UpdatePlayerState(PlayerState.InInventory);
+                dragItem.GetComponent<DragItemController>().StopDragging();
             } else if(PlayerStateController.Instance.GetPlayerState() == PlayerState.InInventory) {
                 inventoryPanel.SetActive(false);
                 PlayerStateController.Instance.UpdatePlayerState(PlayerState.Playing);
@@ -52,9 +54,14 @@ public class InventoryController : MonoBehaviour
         }
         currentItemsImagePanels.Clear();
         foreach(Item myItem in currentItems) {
-            GameObject newImagePanel = Instantiate(inventoryImagePrefab, inventoryImagesPanel);
-            newImagePanel.GetComponent<Image>().sprite = myItem.image;
-            currentItemsImagePanels.Add(newImagePanel);
+            GameObject newInventoryButton = Instantiate(inventoryButtonPrefab, inventoryImagesPanel);
+            newInventoryButton.GetComponentInChildren<InventoryButton>().setItem(myItem, this);
+            currentItemsImagePanels.Add(newInventoryButton);
         }
+    }
+
+    public void IsDraggingInventory() {
+        inventoryPanel.SetActive(false);
+        PlayerStateController.Instance.UpdatePlayerState(PlayerState.DraggingInventory);
     }
 }

@@ -23,11 +23,15 @@ public class DialogueController : MonoBehaviour
         playerState = PlayerStateController.Instance;
     }
     
-    public void StartConversation(Character newCharacter)
+    public void StartConversation(Character newCharacter, bool isGivenWantedItem)
     {
         playerState.UpdatePlayerState(PlayerState.InDialogue);
         characterObject = newCharacter;
-        currentDialogue = newCharacter.myDialogue;
+        if(isGivenWantedItem) {
+            currentDialogue = newCharacter.givenWantedItem;
+        } else {
+            currentDialogue = newCharacter.myDialogue;
+        }
         clearText();
         dialogueTextObject.SetActive(true);
         currentLineIndex = 0;
