@@ -58,10 +58,10 @@ public class DialogueController : MonoBehaviour
         float dialogueDuration = (startBuffer + durationLength * currentLine.text.Length) / 1000;
         StartCoroutine(StartTimer(dialogueDuration));
         if(currentLine.giveItem) {
-            gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().AddItem(currentLine.giveItem);
+            gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().AddItem(currentLine.giveItem, "Recieved ");
         }
         if(currentLine.takeItem) {
-            gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().RemoveItem(currentLine.takeItem);
+            gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().RemoveItem(currentLine.takeItem, "Gave ");
         }
     }
     

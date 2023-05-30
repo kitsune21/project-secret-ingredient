@@ -12,6 +12,7 @@ public class InventoryController : MonoBehaviour
     public GameObject inventoryButtonPrefab;
     public GameObject dragItem;
     private PlayerStateController playerState;
+    public NotificationController notificationController;
 
     void Start() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -34,14 +35,16 @@ public class InventoryController : MonoBehaviour
         }
     }
     
-    public void AddItem(Item newItem) {
+    public void AddItem(Item newItem, string notificationText) {
         currentItems.Add(newItem);
         refreshInventoryPanel();
+        notificationController.GetItemNotification(newItem.name, notificationText);
     }
 
-    public void RemoveItem(Item itemToRemove) {
+    public void RemoveItem(Item itemToRemove, string notificationText) {
         currentItems.Remove(itemToRemove);
         refreshInventoryPanel();
+        notificationController.RemoveItemNotification(itemToRemove.name, notificationText);
     }
 
     public bool CheckIfPlayerHasItem(Item checkItem) {

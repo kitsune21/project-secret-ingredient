@@ -55,7 +55,7 @@ public class ObjectController : MonoBehaviour {
                 if(myItem) {
                     isClicked = false;
                     isHovering = false;
-                    player.GetComponentInChildren<InventoryController>().AddItem(myItem);
+                    player.GetComponentInChildren<InventoryController>().AddItem(myItem, "Picked up ");
                     interactableTextController.UpdateMyText("");
                     Destroy(gameObject);
                 }
@@ -74,7 +74,7 @@ public class ObjectController : MonoBehaviour {
                     DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
                     if(dragItemController.myItem && dragItemController.myItem.id == requiredItem.id) {
                         dragItemController.StopDragging();
-                        player.GetComponentInChildren<InventoryController>().RemoveItem(requiredItem);
+                        player.GetComponentInChildren<InventoryController>().RemoveItem(requiredItem, "Used ");
                         playerState.UpdatePlayerState(PlayerState.Victory);
                     }
                 }
