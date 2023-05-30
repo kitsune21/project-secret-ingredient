@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c39600bb7931074e9a4921489fb4413, type: 3}
-  m_Name: Line2
+  m_Name: Thanks2
   m_EditorClassIdentifier: 
   id: 2
   speakerId: 1
-  text: Have this blue box. I'm not sure what it is for.
+  text: 
   options: []
   giveItem: {fileID: 11400000, guid: cc79b598aff3914448b5013101b1eeef, type: 2}
   takeItem: {fileID: 0}

@@ -16,5 +16,5 @@ MonoBehaviour:
   speakerId: 1
   text: Thanks! Have the blue box.
   options: []
-  giveItem: {fileID: 11400000, guid: cc79b598aff3914448b5013101b1eeef, type: 2}
+  giveItem: {fileID: 0}
   takeItem: {fileID: 11400000, guid: 0c8b4ac48938f1f41b257b990259102c, type: 2}

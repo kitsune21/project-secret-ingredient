@@ -7,7 +7,6 @@ public class ObjectController : MonoBehaviour {
     public string onHoverText;
     public Item myItem;
     public Character myCharacter;
-    public Room myRoom;
     private bool isClicked;
     private bool isHovering = false;
     private InteractableTextController interactableTextController;
@@ -20,9 +19,6 @@ public class ObjectController : MonoBehaviour {
         interactableTextController = GameObject.FindGameObjectWithTag("InteractableText").GetComponent<InteractableTextController>();
         if(myItem) {
             onHoverText = myItem.description;
-        }
-        if(myRoom) {
-            onHoverText = "Go to " + myRoom.name;
         }
     }
 
@@ -77,9 +73,6 @@ public class ObjectController : MonoBehaviour {
                         player.GetComponentInChildren<InventoryController>().RemoveItem(requiredItem, "Used ");
                         playerState.UpdatePlayerState(PlayerState.Victory);
                     }
-                }
-                if(myRoom) {
-                    interactableTextController.UpdateMyText("");
                 }
             }
         }

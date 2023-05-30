@@ -26,6 +26,7 @@ public class DialogueController : MonoBehaviour
     
     public void StartConversation(Character newCharacter, bool isGivenWantedItem)
     {
+        optionsTextPanel.SetActive(false);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
         playerState.UpdatePlayerState(PlayerState.InDialogue);
@@ -91,6 +92,7 @@ public class DialogueController : MonoBehaviour
     }
 
     private void displayOptions(DialogueLine currentLine) {
+        optionsTextPanel.SetActive(true);
         for (int i = 0; i < currentLine.options.Length; i++)
         {
             DialogueOption optionText = currentLine.options[i];
@@ -121,6 +123,7 @@ public class DialogueController : MonoBehaviour
         StopAllCoroutines();
         playerState.UpdatePlayerState(PlayerState.Playing);
         ClearOptions();
+        optionsTextPanel.SetActive(false);
     }
 
     private void ClearOptions() {
@@ -128,6 +131,7 @@ public class DialogueController : MonoBehaviour
             Destroy(optionText);
         }
         optionsTextList.Clear();
+        optionsTextPanel.SetActive(false);
     }
 
     private void createOption(DialogueOption optionText, int i) {
