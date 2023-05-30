@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onHoverText: 
+  onHoldText: 
   myItem: {fileID: 11400000, guid: 0c8b4ac48938f1f41b257b990259102c, type: 2}
   myCharacter: {fileID: 0}
   requiredItem: {fileID: 0}
@@ -517,7 +518,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a95a49546739954593938481879ab2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onHoverText: A mysterious blue box with a hole in it.
+  onHoverText: Blue box
+  onHoldText: A mysterious blue box with a hole in it. I wonder if I can put something
+    in the hole?
   myItem: {fileID: 0}
   myCharacter: {fileID: 0}
   requiredItem: {fileID: 11400000, guid: cc79b598aff3914448b5013101b1eeef, type: 2}
@@ -858,6 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onHoverText: PurpleBox Guy
+  onHoldText: 
   myItem: {fileID: 0}
   myCharacter: {fileID: 0}
   requiredItem: {fileID: 0}
@@ -1050,6 +1054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onHoverText: 
+  onHoldText: 
   myItem: {fileID: 0}
   myCharacter: {fileID: 0}
   requiredItem: {fileID: 0}
@@ -1079,6 +1084,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1239160667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1239160667, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
+  m_PrefabInstance: {fileID: 2092325019190119861}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2816441d9449540a8a1a9934787628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1252255022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onHoverText: PurpleBox Guy
+  onHoldText: 
   myItem: {fileID: 0}
   myCharacter: {fileID: 11400000, guid: db159e1333a7dc74c8ccd8451f4251c4, type: 2}
   requiredItem: {fileID: 0}
@@ -1295,6 +1312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onHoverText: 
+  onHoldText: 
   myItem: {fileID: 0}
   myCharacter: {fileID: 0}
   requiredItem: {fileID: 0}
@@ -1479,6 +1497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onHoverText: 
+  onHoldText: 
   myItem: {fileID: 0}
   myCharacter: {fileID: 0}
   requiredItem: {fileID: 0}
@@ -1614,6 +1633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onHoverText: PurpleBox Guy
+  onHoldText: 
   myItem: {fileID: 0}
   myCharacter: {fileID: 0}
   requiredItem: {fileID: 0}
@@ -1933,6 +1953,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1239160665, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
+      propertyPath: m_text
+      value: Notification Text Here
+      objectReference: {fileID: 0}
     - target: {fileID: 2092325017765535610, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2125,7 +2149,7 @@ PrefabInstance:
     - target: {fileID: 7731088185425293443, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
       propertyPath: notificationController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1239160667}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
 --- !u!1001 &6602658311089203986

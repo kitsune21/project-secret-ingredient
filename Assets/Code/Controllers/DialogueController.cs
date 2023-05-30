@@ -141,5 +141,22 @@ public class DialogueController : MonoBehaviour
         newOption.GetComponent<OptionTextController>().setDialogueController(this);
         optionsTextList.Add(newOption);
     }
+
+    public void showLookAtText(string textToShow) {
+        dialogueTextObject.SetActive(true);
+        optionsTextPanel.SetActive(false);
+        clearText();
+        playerText.text = textToShow;
+        float dialogueDuration = (startBuffer + durationLength * textToShow.Length) / 1000;
+        StartCoroutine(DisplayLookAtText(dialogueDuration));
+    }
+
+    private IEnumerator DisplayLookAtText(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        clearText();
+        dialogueTextObject.SetActive(false);
+    }
 }
 

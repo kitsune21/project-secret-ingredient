@@ -8,5 +8,6 @@ public class Item : ScriptableObject
     public int id;
     public string itemName;
     public string description;
+    public string onHoldText;
     public Sprite image;
 }
