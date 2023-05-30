@@ -11,20 +11,25 @@ public class InventoryController : MonoBehaviour
     private Transform inventoryImagesPanel;
     public GameObject inventoryButtonPrefab;
     public GameObject dragItem;
+    private PlayerStateController playerState;
 
     void Start() {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
         inventoryImagesPanel = inventoryPanel.transform.Find("InventoryImages");
     }
 
     void Update() {
         if (Input.GetMouseButtonDown(1)) {
-            if(PlayerStateController.Instance.GetPlayerState() == PlayerState.Playing || PlayerStateController.Instance.GetPlayerState() == PlayerState.DraggingInventory) {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
+            if(playerState.GetPlayerState() == PlayerState.Playing || playerState.GetPlayerState() == PlayerState.DraggingInventory) {
                 inventoryPanel.SetActive(true); 
-                PlayerStateController.Instance.UpdatePlayerState(PlayerState.InInventory);
+                playerState.UpdatePlayerState(PlayerState.InInventory);
                 dragItem.GetComponent<DragItemController>().StopDragging();
-            } else if(PlayerStateController.Instance.GetPlayerState() == PlayerState.InInventory) {
+            } else if(playerState.GetPlayerState() == PlayerState.InInventory) {
                 inventoryPanel.SetActive(false);
-                PlayerStateController.Instance.UpdatePlayerState(PlayerState.Playing);
+                playerState.UpdatePlayerState(PlayerState.Playing);
             }
         }
     }
@@ -62,6 +67,6 @@ public class InventoryController : MonoBehaviour
 
     public void IsDraggingInventory() {
         inventoryPanel.SetActive(false);
-        PlayerStateController.Instance.UpdatePlayerState(PlayerState.DraggingInventory);
+        playerState.UpdatePlayerState(PlayerState.DraggingInventory);
     }
 }

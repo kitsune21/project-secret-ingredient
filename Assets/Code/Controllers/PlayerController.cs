@@ -8,10 +8,10 @@ public class PlayerController : MonoBehaviour {
     private DialogueController dialogueController;
 
     void Start() {
+        playerState = GetComponentInChildren<PlayerStateController>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
-        playerState = PlayerStateController.Instance;
     }
 
     void Update() {
@@ -28,5 +28,16 @@ public class PlayerController : MonoBehaviour {
             return navMeshAgent.remainingDistance;
         }
         return 100;
+    }
+
+    public void SetNewDestination(Transform newPosition) {
+        navMeshAgent.enabled = false;
+        transform.position = newPosition.position;
+        navMeshAgent.enabled = true;
+        navMeshAgent.SetDestination(newPosition.position);
+    }
+
+    public PlayerStateController GetPlayerStateController() {
+        return playerState;
     }
 }

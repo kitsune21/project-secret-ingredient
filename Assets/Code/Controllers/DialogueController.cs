@@ -20,11 +20,14 @@ public class DialogueController : MonoBehaviour
     private PlayerStateController playerState;
 
     void Start() {
-        playerState = PlayerStateController.Instance;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
     }
     
     public void StartConversation(Character newCharacter, bool isGivenWantedItem)
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
         playerState.UpdatePlayerState(PlayerState.InDialogue);
         characterObject = newCharacter;
         if(isGivenWantedItem) {
