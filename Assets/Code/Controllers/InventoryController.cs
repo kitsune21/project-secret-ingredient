@@ -21,9 +21,11 @@ public class InventoryController : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetMouseButtonDown(1)) {
+        if(playerState == null) {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
+        }
+        if (Input.GetMouseButtonDown(1)) {
             if(playerState.GetPlayerState() == PlayerState.Playing || playerState.GetPlayerState() == PlayerState.DraggingInventory) {
                 inventoryPanel.SetActive(true); 
                 playerState.UpdatePlayerState(PlayerState.InInventory);
@@ -32,6 +34,9 @@ public class InventoryController : MonoBehaviour
                 inventoryPanel.SetActive(false);
                 playerState.UpdatePlayerState(PlayerState.Playing);
             }
+        }
+        if(playerState.GetPlayerState() != PlayerState.InInventory) {
+            CloseInventory();
         }
     }
     
@@ -60,6 +65,7 @@ public class InventoryController : MonoBehaviour
         foreach(GameObject imagePanel in currentItemsImagePanels) {
             Destroy(imagePanel);
         }
+
         currentItemsImagePanels.Clear();
         foreach(Item myItem in currentItems) {
             GameObject newInventoryButton = Instantiate(inventoryButtonPrefab, inventoryImagesPanel);
@@ -71,5 +77,9 @@ public class InventoryController : MonoBehaviour
     public void IsDraggingInventory() {
         inventoryPanel.SetActive(false);
         playerState.UpdatePlayerState(PlayerState.DraggingInventory);
+    }
+
+    public void CloseInventory() {
+        inventoryPanel.SetActive(false);
     }
 }
