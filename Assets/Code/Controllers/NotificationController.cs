@@ -5,22 +5,22 @@ using TMPro;
 public class NotificationController : MonoBehaviour
 {
     private TMP_Text notificationText;
+    private RectTransform rectTransform;
+    public GameObject dialogueOptionsPanel;
+    public GameObject inventoryPanel;
 
     void Start() {
         notificationText = GetComponent<TMP_Text>();
+        rectTransform = notificationText.rectTransform;
         ClearText();
     }
 
-    public void UpdateNotificationText(string newText) {
-        notificationText.text = newText;
-    }
-
-    public void GetItemNotification(string itemName, string notification) {
-        notificationText.text = notification + itemName;
-        StartCoroutine(StartTimer(3.0f));
-    }
-
-    public void RemoveItemNotification(string itemName, string notification) {
+    public void UpdateNotificationText(string itemName, string notification) {
+        if(dialogueOptionsPanel.activeSelf || inventoryPanel.activeSelf) {
+            updateRectTransformPositionY(220);
+        } else {
+            updateRectTransformPositionY(25);
+        }
         notificationText.text = notification + itemName;
         StartCoroutine(StartTimer(3.0f));
     }
@@ -34,5 +34,11 @@ public class NotificationController : MonoBehaviour
 
     private void ClearText() {
         notificationText.text = "";
+    }
+
+    private void updateRectTransformPositionY(float y) {
+        Vector2 currentPosition = rectTransform.anchoredPosition;
+        currentPosition.y = y;
+        rectTransform.anchoredPosition = currentPosition;
     }
 }

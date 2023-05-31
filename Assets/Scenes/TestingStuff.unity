@@ -1957,6 +1957,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Notification Text Here
       objectReference: {fileID: 0}
+    - target: {fileID: 1239160667, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
+      propertyPath: inventoryPanel
+      value: 
+      objectReference: {fileID: 376894418}
+    - target: {fileID: 1239160667, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
+      propertyPath: dialogueOptionsPanel
+      value: 
+      objectReference: {fileID: 1941578101}
     - target: {fileID: 2092325017765535610, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2044,6 +2052,10 @@ PrefabInstance:
     - target: {fileID: 2092325017765535614, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
       propertyPath: m_Name
       value: UI-Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2092325017890115377, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}

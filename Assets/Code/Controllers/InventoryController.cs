@@ -43,13 +43,13 @@ public class InventoryController : MonoBehaviour
     public void AddItem(Item newItem, string notificationText) {
         currentItems.Add(newItem);
         refreshInventoryPanel();
-        notificationController.GetItemNotification(newItem.name, notificationText);
+        notificationController.UpdateNotificationText(newItem.name, notificationText);
     }
 
     public void RemoveItem(Item itemToRemove, string notificationText) {
         currentItems.Remove(itemToRemove);
         refreshInventoryPanel();
-        notificationController.RemoveItemNotification(itemToRemove.name, notificationText);
+        notificationController.UpdateNotificationText(itemToRemove.name, notificationText);
     }
 
     public bool CheckIfPlayerHasItem(Item checkItem) {
