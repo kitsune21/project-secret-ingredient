@@ -8,7 +8,7 @@ public class ObjectController : MonoBehaviour {
     public string onHoldText;
     public Item myItem;
     public Character myCharacter;
-    private bool isClicked;
+    public bool isClicked;
     private bool isHovering = false;
     private InteractableTextController interactableTextController;
     private GameObject player;
@@ -42,8 +42,7 @@ public class ObjectController : MonoBehaviour {
         interactableTextController.UpdateMyText("");
     }
 
-    private void Update()
-    {
+    private void Update() {
         if(playerState == null) {
             playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
         }
@@ -55,57 +54,54 @@ public class ObjectController : MonoBehaviour {
                     isClicked = true;
                 }
             }
-            if(isClicked) {
-                float distance = Vector3.Distance(transform.position, player.transform.position);
-                if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.05f && distance < 2f) {
-                    if(myItem) {
-                        isClicked = false;
-                        isHovering = false;
-                        player.GetComponentInChildren<InventoryController>().AddItem(myItem, "Picked up ");
-                        interactableTextController.UpdateMyText("");
-                        Destroy(gameObject);
-                    }
-                    if(myCharacter) {
-                        DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
-                        bool isGivenWantedItem = false;
-                        if(dragItemController.myItem && dragItemController.myItem.id == myCharacter.wantedItem.id) {
-                            isGivenWantedItem = true;
-                            dragItemController.StopDragging();
-                        }
-                        player.GetComponentInChildren<DialogueController>().StartConversation(myCharacter, isGivenWantedItem);
-                        isHovering = false;
-                        isClicked = false;
-                    }
-                    if(myPuzzle && myPuzzle.requiredItem) {
-                        DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
-                        if(dragItemController.myItem && dragItemController.myItem.id == myPuzzle.requiredItem.id) {
-                            dragItemController.StopDragging();
-                            player.GetComponentInChildren<InventoryController>().RemoveItem(myPuzzle.requiredItem, "Used ");
-                            if(myPuzzle.CheckAllPuzzles()) {
-                                handleCompletePuzzle();
-                                handleFinalPuzzle();
-                                return;
-                            } else {
-                                Debug.Log("this??");
-                                showFailText();
-                            }
-                        }
-                    }
-                    if(myPuzzle && !myPuzzle.requiredItem) {
-                        if(myPuzzle.CheckAllPuzzles()) {
-                            handleCompletePuzzle();
-                            handleFinalPuzzle();
-                        } else {
-                            showFailText();
-                        }
-                    }
-                    if(!myItem && !myCharacter) {
-                        player.GetComponentInChildren<DialogueController>().showLookAtText(onHoldText);
-                        isHovering = false;
-                        isClicked = false;
-                    }
+        }
+    }
+
+    public void HandleInteraction()
+    { 
+        isHovering = false;
+        if(myItem) {
+            player.GetComponentInChildren<InventoryController>().AddItem(myItem, "Picked up ");
+            interactableTextController.UpdateMyText("");
+            Destroy(gameObject);
+        }
+        if(myCharacter) {
+            isClicked = false;
+            DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
+            bool isGivenWantedItem = false;
+            if(dragItemController.myItem && dragItemController.myItem.id == myCharacter.wantedItem.id) {
+                isGivenWantedItem = true;
+                dragItemController.StopDragging();
+            }
+            player.GetComponentInChildren<DialogueController>().StartConversation(myCharacter, isGivenWantedItem);
+        }
+        if(myPuzzle && myPuzzle.requiredItem) {
+            isClicked = false;
+            DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
+            if(dragItemController.myItem && dragItemController.myItem.id == myPuzzle.requiredItem.id) {
+                dragItemController.StopDragging();
+                if(!myPuzzle.requiredItem.permanent) {
+                    player.GetComponentInChildren<InventoryController>().RemoveItem(myPuzzle.requiredItem, "Used ");
+                }
+                if(myPuzzle.CheckAllPuzzles()) {
+                    handleCompletePuzzle();
+                    handleFinalPuzzle();
+                    return;
+                } else {
+                    showFailText();
                 }
             }
+        }
+        if(myPuzzle && !myPuzzle.requiredItem) {
+            if(myPuzzle.CheckAllPuzzles()) {
+                handleCompletePuzzle();
+                handleFinalPuzzle();
+            } else {
+                showFailText();
+            }
+        }
+        if(!myItem && !myCharacter) {
+            player.GetComponentInChildren<DialogueController>().showLookAtText(onHoldText);
         }
     }
 

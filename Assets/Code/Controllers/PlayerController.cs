@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour {
                 navMeshAgent.SetDestination(transform.position);
                 other.GetComponent<NPCCharacterController>().StartConversationWithNPC();
             }
+        } else if(other.tag == "object") {
+            if(other.GetComponent<ObjectController>().isClicked) {
+                navMeshAgent.SetDestination(transform.position);
+                other.GetComponent<ObjectController>().HandleInteraction();
+            }
         }
     }
 

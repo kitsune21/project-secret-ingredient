@@ -10,4 +10,5 @@ public class Item : ScriptableObject
     public string description;
     public string onHoldText;
     public Sprite image;
+    public bool permanent;
 }

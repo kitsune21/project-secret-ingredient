@@ -9,6 +9,8 @@ TagManager:
   - DragItem
   - Start
   - character
+  - object
+  - door
   layers:
   - Default
   - TransparentFX
