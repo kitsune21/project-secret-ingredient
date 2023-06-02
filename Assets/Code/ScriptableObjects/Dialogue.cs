@@ -4,7 +4,7 @@ using UnityEngine;
 public class Dialogue : ScriptableObject
 {
     public int id;
-    public DialogueLine[] lines; // Array of dialogue lines
+    public DialogueLine[] lines;
     
     public DialogueLine GetLine(int index)
     {

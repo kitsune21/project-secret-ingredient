@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c39600bb7931074e9a4921489fb4413, type: 3}
+  m_Name: Line2
+  m_EditorClassIdentifier: 
+  id: 2
+  speakerId: 2
+  text: Are you here to see the world famous Golden Chopsticks Exhibit?
+  options:
+  - {fileID: 11400000, guid: ce9cde4ab2f805a4fa46a456e76fa9ac, type: 2}
+  - {fileID: 11400000, guid: fd7a0b3957a182648bf75dc7654b69ec, type: 2}
+  - {fileID: 11400000, guid: b8e160a0f53a60247b724ef585365162, type: 2}
+  giveItem: {fileID: 0}
+  takeItem: {fileID: 0}

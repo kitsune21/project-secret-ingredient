@@ -8,6 +8,7 @@ TagManager:
   - VictoryText
   - DragItem
   - Start
+  - character
   layers:
   - Default
   - TransparentFX

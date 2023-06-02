@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryController : MonoBehaviour
 {
-    public List<Item> currentItems = new List<Item>();
+    private List<Item> currentItems = new List<Item>();
+    public List<Item> startingItems = new List<Item>();
     public List<GameObject> currentItemsImagePanels = new List<GameObject>();
     public GameObject inventoryPanel;
     private Transform inventoryImagesPanel;
@@ -18,6 +20,11 @@ public class InventoryController : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
         inventoryImagesPanel = inventoryPanel.transform.Find("InventoryImages");
+        if(startingItems.Count > 0) {
+            foreach(Item startItem in startingItems) {
+                AddItem(startItem, "");
+            }
+        }
     }
 
     void Update() {
@@ -41,9 +48,14 @@ public class InventoryController : MonoBehaviour
     }
     
     public void AddItem(Item newItem, string notificationText) {
+        if(CheckIfPlayerHasItem(newItem)) {
+            return;
+        }
         currentItems.Add(newItem);
         refreshInventoryPanel();
-        notificationController.UpdateNotificationText(newItem.name, notificationText);
+        if(notificationText.Length != 0) {
+            notificationController.UpdateNotificationText(newItem.itemName, notificationText);
+        }
     }
 
     public void RemoveItem(Item itemToRemove, string notificationText) {
@@ -70,6 +82,7 @@ public class InventoryController : MonoBehaviour
         foreach(Item myItem in currentItems) {
             GameObject newInventoryButton = Instantiate(inventoryButtonPrefab, inventoryImagesPanel);
             newInventoryButton.GetComponentInChildren<InventoryButton>().setItem(myItem, this);
+            newInventoryButton.GetComponentInChildren<TMP_Text>().text = myItem.itemName;
             currentItemsImagePanels.Add(newInventoryButton);
         }
     }

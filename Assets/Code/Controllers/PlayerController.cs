@@ -22,6 +22,14 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag == "character") {
+            if(!other.GetComponent<NPCCharacterController>().isTriggered) {
+                navMeshAgent.SetDestination(transform.position);
+                other.GetComponent<NPCCharacterController>().StartConversationWithNPC();
+            }
+        }
+    }
 
     public float GetRemainingDistance() {
         if((Vector2)transform.position != (Vector2)navMeshAgent.destination) {
@@ -35,6 +43,10 @@ public class PlayerController : MonoBehaviour {
         transform.position = newPosition.position;
         navMeshAgent.enabled = true;
         navMeshAgent.SetDestination(newPosition.position);
+    }
+
+    public void SetNewDestinationVector(Vector3 newPosition) {
+        navMeshAgent.SetDestination(newPosition);
     }
 
     public PlayerStateController GetPlayerStateController() {

@@ -13,14 +13,18 @@ public class ObjectController : MonoBehaviour {
     private InteractableTextController interactableTextController;
     private GameObject player;
     private PlayerStateController playerState;
-    public Item requiredItem;
+    public Puzzle myPuzzle;
+    public NPCCharacterController characterToTrigger;
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
         interactableTextController = GameObject.FindGameObjectWithTag("InteractableText").GetComponent<InteractableTextController>();
         if(myItem) {
-            onHoverText = myItem.name;
+            onHoverText = myItem.itemName;
             onHoldText = myItem.onHoldText;
+        }
+        if(myPuzzle) {
+            myPuzzle.completed = false;
         }
     }
 
@@ -43,7 +47,7 @@ public class ObjectController : MonoBehaviour {
         if(playerState == null) {
             playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
         }
-        if(playerState.GetPlayerState() != PlayerState.Victory) {
+        if(playerState.GetPlayerState() != PlayerState.Victory && playerState.GetPlayerState() != PlayerState.InDialogue) {
             if (isHovering)
             {
                 interactableTextController.UpdateMyText(onHoverText);
@@ -53,7 +57,7 @@ public class ObjectController : MonoBehaviour {
             }
             if(isClicked) {
                 float distance = Vector3.Distance(transform.position, player.transform.position);
-                if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.5f && distance < 4f) {
+                if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.05f && distance < 2f) {
                     if(myItem) {
                         isClicked = false;
                         isHovering = false;
@@ -72,20 +76,55 @@ public class ObjectController : MonoBehaviour {
                         isHovering = false;
                         isClicked = false;
                     }
-                    if(requiredItem) {
+                    if(myPuzzle && myPuzzle.requiredItem) {
                         DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
-                        if(dragItemController.myItem && dragItemController.myItem.id == requiredItem.id) {
+                        if(dragItemController.myItem && dragItemController.myItem.id == myPuzzle.requiredItem.id) {
                             dragItemController.StopDragging();
-                            player.GetComponentInChildren<InventoryController>().RemoveItem(requiredItem, "Used ");
-                            playerState.UpdatePlayerState(PlayerState.Victory);
-                            return;
+                            player.GetComponentInChildren<InventoryController>().RemoveItem(myPuzzle.requiredItem, "Used ");
+                            if(myPuzzle.CheckAllPuzzles()) {
+                                handleCompletePuzzle();
+                                handleFinalPuzzle();
+                                return;
+                            } else {
+                                Debug.Log("this??");
+                                showFailText();
+                            }
+                        }
+                    }
+                    if(myPuzzle && !myPuzzle.requiredItem) {
+                        if(myPuzzle.CheckAllPuzzles()) {
+                            handleCompletePuzzle();
+                            handleFinalPuzzle();
+                        } else {
+                            showFailText();
                         }
                     }
                     if(!myItem && !myCharacter) {
                         player.GetComponentInChildren<DialogueController>().showLookAtText(onHoldText);
+                        isHovering = false;
+                        isClicked = false;
                     }
                 }
             }
+        }
+    }
+
+    private void showFailText() {
+        if(myPuzzle && myPuzzle.failText.Length > 0) {
+            player.GetComponentInChildren<DialogueController>().showLookAtTextWithNoOverride(myPuzzle.failText);
+        }
+    }
+
+    private void handleFinalPuzzle() {
+        if(myPuzzle && myPuzzle.finalPuzzle) {
+            playerState.UpdatePlayerState(PlayerState.Victory);
+        }
+    }
+
+    private void handleCompletePuzzle() {
+        myPuzzle.completed = true;
+        if(characterToTrigger) {
+            characterToTrigger.TriggerCharacter(transform.position);
         }
     }
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628c0f9be0a805b45a070a675caa071a, type: 3}
+  m_Name: ChopStickDisplyCase
+  m_EditorClassIdentifier: 
+  id: 1
+  description: Need to distract the worker, and have the lock pick item.
+  requiredItem: {fileID: 11400000, guid: d8cd0418f6360d94195a08adb4fda47c, type: 2}
+  requiredPuzzles:
+  - {fileID: 11400000, guid: d0aacc32844600549b1137b0b8709e6e, type: 2}
+  completed: 1
+  failText: I can't use my lock pick with the worker right there watching me.
+  finalPuzzle: 1

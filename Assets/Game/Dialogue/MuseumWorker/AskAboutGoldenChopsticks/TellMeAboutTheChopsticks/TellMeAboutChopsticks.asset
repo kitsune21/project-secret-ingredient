@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea25e5049479354994eb2f997038e03, type: 3}
+  m_Name: TellMeAboutChopsticks
+  m_EditorClassIdentifier: 
+  id: 1
+  lines:
+  - {fileID: 11400000, guid: e35bca922edc6134c9bfde59f0ce0ee8, type: 2}
+  - {fileID: 11400000, guid: 823819106a1afc14ea4c472cf140259e, type: 2}
+  - {fileID: 11400000, guid: 10615dbcbdbc0944c8fa03e4214c4bf1, type: 2}
+  - {fileID: 11400000, guid: 3981d6c3257e66249907d7cb2aa9c850, type: 2}

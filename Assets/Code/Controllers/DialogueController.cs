@@ -18,14 +18,17 @@ public class DialogueController : MonoBehaviour
     public GameObject optionsTextPanel;
     private List<GameObject> optionsTextList = new List<GameObject>();
     private PlayerStateController playerState;
+    private bool allowOverride;
 
     void Start() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
+        allowOverride = true;
     }
     
     public void StartConversation(Character newCharacter, bool isGivenWantedItem)
     {
+        StopAllCoroutines();
         optionsTextPanel.SetActive(false);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
@@ -57,13 +60,18 @@ public class DialogueController : MonoBehaviour
             return;
         }
         float dialogueDuration = (startBuffer + durationLength * currentLine.text.Length) / 1000;
-        StartCoroutine(StartTimer(dialogueDuration));
         if(currentLine.giveItem) {
-            gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().AddItem(currentLine.giveItem, "Recieved ");
+            if(gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().CheckIfPlayerHasItem(currentLine.giveItem)) {
+                otherText.text = currentLine.playerHasItem;
+            } else {
+                gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().AddItem(currentLine.giveItem, "Recieved ");
+            }
         }
         if(currentLine.takeItem) {
             gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().RemoveItem(currentLine.takeItem, "Gave ");
         }
+        
+        StartCoroutine(StartTimer(dialogueDuration));
     }
     
     private void AdvanceToNextLine()
@@ -86,7 +94,8 @@ public class DialogueController : MonoBehaviour
         AdvanceToNextLine();
     }
 
-    private void clearText() {
+    private void clearText() { 
+        otherText.color = Color.white;
         playerText.text = "";
         otherText.text = "";
     }
@@ -142,7 +151,31 @@ public class DialogueController : MonoBehaviour
         optionsTextList.Add(newOption);
     }
 
-    public void showLookAtText(string textToShow) {
+    public void showLookAtText(string textToShow) { 
+        if(!allowOverride) {
+            return;
+        }
+        dialogueTextObject.SetActive(true);
+        optionsTextPanel.SetActive(false);
+        clearText();
+        playerText.text = textToShow;
+        float dialogueDuration = (startBuffer + durationLength * textToShow.Length) / 1000;
+        StartCoroutine(DisplayLookAtText(dialogueDuration));
+    }
+
+    public void showLookAtTextNPC(string textToShow, Character npcCharacter) {
+        allowOverride = false;
+        dialogueTextObject.SetActive(true);
+        optionsTextPanel.SetActive(false);
+        clearText();
+        otherText.text = textToShow;
+        otherText.color = npcCharacter.dialogueColor;
+        float dialogueDuration = (startBuffer + durationLength * textToShow.Length) / 1000;
+        StartCoroutine(DisplayLookAtText(dialogueDuration));
+    }
+
+    public void showLookAtTextWithNoOverride(string textToShow) {
+        allowOverride = false;
         dialogueTextObject.SetActive(true);
         optionsTextPanel.SetActive(false);
         clearText();
@@ -157,6 +190,8 @@ public class DialogueController : MonoBehaviour
 
         clearText();
         dialogueTextObject.SetActive(false);
+        StopAllCoroutines();
+        allowOverride = true;
     }
 }
 
