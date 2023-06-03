@@ -34,7 +34,7 @@ public class InventoryController : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1)) {
             if(playerState.GetPlayerState() == PlayerState.Playing || playerState.GetPlayerState() == PlayerState.DraggingInventory) {
-                inventoryPanel.SetActive(true); 
+                inventoryPanel.SetActive(true);
                 playerState.UpdatePlayerState(PlayerState.InInventory);
                 dragItem.GetComponent<DragItemController>().StopDragging();
             } else if(playerState.GetPlayerState() == PlayerState.InInventory) {
