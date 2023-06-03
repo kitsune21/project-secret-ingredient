@@ -1618,9 +1618,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 861029139}
-  - component: {fileID: 861029138}
-  - component: {fileID: 861029137}
-  - component: {fileID: 861029136}
   m_Layer: 0
   m_Name: Room-MuseumEntrance
   m_TagString: Untagged
@@ -1628,71 +1625,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
---- !u!114 &861029136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 861029135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a95a49546739954593938481879ab2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHoverText: PurpleBox Guy
-  onHoldText: 
-  myItem: {fileID: 0}
-  myCharacter: {fileID: 0}
-  isClicked: 0
-  myPuzzle: {fileID: 0}
-  characterToTrigger: {fileID: 0}
---- !u!114 &861029137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 861029135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70bd44a44cd62c64fbfc1eea95b24880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideByGrid: 0
-  m_UseMeshPrefab: {fileID: 0}
-  m_CompressBounds: 0
-  m_OverrideVector: {x: 1, y: 1, z: 1}
---- !u!114 &861029138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 861029135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04976799df50f54ba128eff723155a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_BuildHeightMesh: 0
-  m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 6ed1dc0cf5eb858449ae104c689659ac, type: 2}
 --- !u!4 &861029139
 Transform:
   m_ObjectHideFlags: 0
@@ -1700,7 +1632,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861029135}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 35, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1955,8 +1887,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 972868556}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -25, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1915171049}
@@ -2938,6 +2870,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1421113595}
+  - component: {fileID: 1421113597}
+  - component: {fileID: 1421113596}
   m_Layer: 0
   m_Name: Rooms
   m_TagString: Untagged
@@ -2952,7 +2886,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421113594}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2963,6 +2897,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1421113596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421113594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70bd44a44cd62c64fbfc1eea95b24880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideByGrid: 0
+  m_UseMeshPrefab: {fileID: 0}
+  m_CompressBounds: 0
+  m_OverrideVector: {x: 1, y: 1, z: 1}
+--- !u!114 &1421113597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421113594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04976799df50f54ba128eff723155a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_HideEditorLogs: 0
+  m_NavMeshData: {fileID: 23800000, guid: 345ccfb9fe7865841943cf2421984e20, type: 2}
 --- !u!1 &1434288772 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2092325017890115377, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
@@ -3008,9 +2988,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1578080983}
-  - component: {fileID: 1578080985}
-  - component: {fileID: 1578080984}
-  - component: {fileID: 1578080986}
   m_Layer: 0
   m_Name: Room-MuseumExhibits
   m_TagString: Untagged
@@ -3025,7 +3002,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578080982}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3041,71 +3018,6 @@ Transform:
   m_Father: {fileID: 1421113595}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1578080984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578080982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70bd44a44cd62c64fbfc1eea95b24880, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideByGrid: 0
-  m_UseMeshPrefab: {fileID: 0}
-  m_CompressBounds: 0
-  m_OverrideVector: {x: 1, y: 1, z: 1}
---- !u!114 &1578080985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578080982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04976799df50f54ba128eff723155a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AgentTypeID: 0
-  m_CollectObjects: 2
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
-  m_BuildHeightMesh: 0
-  m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: e75bbee3f1323f843ba175b32ff16696, type: 2}
---- !u!114 &1578080986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578080982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a95a49546739954593938481879ab2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHoverText: PurpleBox Guy
-  onHoldText: 
-  myItem: {fileID: 0}
-  myCharacter: {fileID: 0}
-  isClicked: 0
-  myPuzzle: {fileID: 0}
-  characterToTrigger: {fileID: 0}
 --- !u!1 &1640293600 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2092325017566685525, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}

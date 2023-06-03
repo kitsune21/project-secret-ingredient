@@ -40,6 +40,9 @@ public class DialogueController : MonoBehaviour
     
     public void StartConversation(Character newCharacter, bool isGivenWantedItem)
     {
+        if(hintText) {
+            hintText.SetActive(true);
+        }
         StopAllCoroutines();
         optionsTextPanel.SetActive(false);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -170,6 +173,9 @@ public class DialogueController : MonoBehaviour
         if(!allowOverride) {
             return;
         }
+        if(hintText) {
+            hintText.SetActive(false);
+        }
         dialogueTextObject.SetActive(true);
         optionsTextPanel.SetActive(false);
         clearText();
@@ -179,6 +185,9 @@ public class DialogueController : MonoBehaviour
     }
 
     public void showLookAtTextNPC(string textToShow, Character npcCharacter) {
+        if(hintText) {
+            hintText.SetActive(false);
+        }
         allowOverride = false;
         dialogueTextObject.SetActive(true);
         optionsTextPanel.SetActive(false);
@@ -190,6 +199,9 @@ public class DialogueController : MonoBehaviour
     }
 
     public void showLookAtTextWithNoOverride(string textToShow) {
+        if(hintText) {
+            hintText.SetActive(false);
+        }
         allowOverride = false;
         dialogueTextObject.SetActive(true);
         optionsTextPanel.SetActive(false);
