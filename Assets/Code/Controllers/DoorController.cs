@@ -16,10 +16,16 @@ public class DoorController : MonoBehaviour
     private GameObject player;
     private PlayerStateController playerState;
     public ClipScript mySong;
+    public Item requiredItem;
+    public string noItemYet;
+    public string hideRoomName;
 
     void Start() {
         interactableTextController = GameObject.FindGameObjectWithTag("InteractableText").GetComponent<InteractableTextController>();
-        onHoverText = "Go to " + myRoom.name;
+        onHoverText = "Go to " + myRoom.roomName;
+        if(hideRoomName.Length > 0) {
+            onHoverText = "Go to " + hideRoomName;
+        }
         player = GameObject.FindGameObjectWithTag("Player");
         playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
     }
@@ -47,18 +53,34 @@ public class DoorController : MonoBehaviour
             }
         }
         if(isClicked) {
+            isHovering = false;
             float distance = Vector3.Distance(transform.position, player.transform.position);
             if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.5f && distance < 4f) {
                 if(myRoom) {
-                    interactableTextController.UpdateMyText("");
-                    myCurrentRoomMesh.SetActive(false);
-                    myRoomMesh.SetActive(true);
-                    player.GetComponent<PlayerController>().SetNewDestination(doorExit);
-                    Camera.main.GetComponent<CameraController>().UpdateStartLoction(newCameraStartLocation);
-                    isHovering = false;
-                    isClicked = false;
-                    if(mySong) {
-                        GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip(mySong.clipName);
+                    if(requiredItem) {
+                        if(player.GetComponentInChildren<InventoryController>().CheckIfPlayerHasItem(requiredItem)) {
+                            interactableTextController.UpdateMyText("");
+                            myCurrentRoomMesh.SetActive(false);
+                            myRoomMesh.SetActive(true);
+                            player.GetComponent<PlayerController>().SetNewDestination(doorExit);
+                            Camera.main.GetComponent<CameraController>().UpdateStartLoction(newCameraStartLocation);
+                            isClicked = false;
+                            if(mySong) {
+                                GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip(mySong.clipName);
+                            }
+                        } else {
+                            player.GetComponentInChildren<DialogueController>().showLookAtTextWithNoOverride(noItemYet);
+                        }
+                    } else {
+                        interactableTextController.UpdateMyText("");
+                        myCurrentRoomMesh.SetActive(false);
+                        myRoomMesh.SetActive(true);
+                        player.GetComponent<PlayerController>().SetNewDestination(doorExit);
+                        Camera.main.GetComponent<CameraController>().UpdateStartLoction(newCameraStartLocation);
+                        isClicked = false;
+                        if(mySong) {
+                            GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip(mySong.clipName);
+                        }
                     }
                 }
             }

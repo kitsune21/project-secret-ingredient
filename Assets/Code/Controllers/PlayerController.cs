@@ -33,9 +33,11 @@ public class PlayerController : MonoBehaviour {
             }
         }
         if(other.tag == "object") {
-            if(other.GetComponent<ObjectController>().isClicked) {
-                navMeshAgent.SetDestination(transform.position);
-                other.GetComponent<ObjectController>().HandleInteraction();
+            if(other.GetComponent<ObjectController>()) {
+                if(other.GetComponent<ObjectController>().isClicked) {
+                    navMeshAgent.SetDestination(transform.position);
+                    other.GetComponent<ObjectController>().HandleInteraction();
+                }
             }
         }
     }

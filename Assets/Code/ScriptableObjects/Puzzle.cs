@@ -8,6 +8,7 @@ public class Puzzle : ScriptableObject
     public int id;
     public string description;
     public Item requiredItem;
+    public Item giveItem;
     public List<Puzzle> requiredPuzzles = new List<Puzzle>();
     public bool completed;
     public string failText;

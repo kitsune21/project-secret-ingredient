@@ -85,6 +85,7 @@ public class ObjectController : MonoBehaviour {
         if(myPuzzle && myPuzzle.requiredItem) {
             DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
             if(dragItemController.myItem && dragItemController.myItem.id == myPuzzle.requiredItem.id) {
+                playerState.UpdatePlayerState(PlayerState.Playing);
                 dragItemController.StopDragging();
                 if(!myPuzzle.requiredItem.permanent) {
                     player.GetComponentInChildren<InventoryController>().RemoveItem(myPuzzle.requiredItem, "Used ");
@@ -99,6 +100,7 @@ public class ObjectController : MonoBehaviour {
             }
         }
         if(myPuzzle && !myPuzzle.requiredItem) {
+            playerState.UpdatePlayerState(PlayerState.Playing);
             if(myPuzzle.CheckAllPuzzles()) {
                 handleCompletePuzzle();
                 handleFinalPuzzle();
@@ -127,6 +129,9 @@ public class ObjectController : MonoBehaviour {
         myPuzzle.completed = true;
         if(characterToTrigger) {
             characterToTrigger.TriggerCharacter(transform.position);
+        }
+        if(myPuzzle.giveItem) {
+            player.GetComponentInChildren<InventoryController>().AddItem(myPuzzle.giveItem, "Picked up ");
         }
     }
 }

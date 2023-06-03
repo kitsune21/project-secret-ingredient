@@ -4,5 +4,6 @@ public enum PlayerState {
     InInventory,
     DraggingInventory,
     InMenu,
+    InScene,
     Victory
 }

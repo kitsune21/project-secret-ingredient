@@ -13,7 +13,7 @@ public class OpenTextScroll : MonoBehaviour
 
     void Start() {
         myRect = GetComponent<RectTransform>();
-        GameObject.Find("Player").GetComponent<PlayerController>().GetPlayerStateController().UpdatePlayerState(PlayerState.InDialogue);
+        GameObject.Find("Player").GetComponent<PlayerController>().GetPlayerStateController().UpdatePlayerState(PlayerState.InScene);
         GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip("Akihabara");
         Camera.main.GetComponent<CameraController>().UpdateStartLoction(defaultPosition);
     }

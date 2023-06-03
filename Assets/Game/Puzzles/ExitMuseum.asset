@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628c0f9be0a805b45a070a675caa071a, type: 3}
+  m_Name: ExitMuseum
+  m_EditorClassIdentifier: 
+  id: 4
+  description: Have to get the golden chopsticks to be able to leave.
+  requiredItem: {fileID: 11400000, guid: 61f90fa35c8c05b49a6c975d3806154a, type: 2}
+  giveItem: {fileID: 0}
+  requiredPuzzles: []
+  completed: 1
+  failText: I can't leave yet. I haven't found the Golden Chopsticks!
+  finalPuzzle: 1
