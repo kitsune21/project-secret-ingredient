@@ -11,6 +11,7 @@ TagManager:
   - character
   - object
   - door
+  - music
   layers:
   - Default
   - TransparentFX

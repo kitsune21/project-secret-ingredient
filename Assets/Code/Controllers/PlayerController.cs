@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     private DialogueController dialogueController;
 
     void Start() {
+        GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip("Akihabara");
         playerState = GetComponentInChildren<PlayerStateController>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;

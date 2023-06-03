@@ -15,6 +15,7 @@ public class DoorController : MonoBehaviour
     public GameObject myCurrentRoomMesh;
     private GameObject player;
     private PlayerStateController playerState;
+    public ClipScript mySong;
 
     void Start() {
         interactableTextController = GameObject.FindGameObjectWithTag("InteractableText").GetComponent<InteractableTextController>();
@@ -56,6 +57,9 @@ public class DoorController : MonoBehaviour
                     Camera.main.GetComponent<CameraController>().UpdateStartLoction(newCameraStartLocation);
                     isHovering = false;
                     isClicked = false;
+                    if(mySong) {
+                        GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip(mySong.clipName);
+                    }
                 }
             }
         }
