@@ -19,6 +19,7 @@ public class DialogueController : MonoBehaviour
     private List<GameObject> optionsTextList = new List<GameObject>();
     private PlayerStateController playerState;
     private bool allowOverride;
+    public GameController gameController;
 
     void Start() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -59,7 +60,6 @@ public class DialogueController : MonoBehaviour
             displayOptions(currentLine);
             return;
         }
-        float dialogueDuration = (startBuffer + durationLength * currentLine.text.Length) / 1000;
         if(currentLine.giveItem) {
             if(gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().CheckIfPlayerHasItem(currentLine.giveItem)) {
                 otherText.text = currentLine.playerHasItem;
@@ -70,7 +70,7 @@ public class DialogueController : MonoBehaviour
         if(currentLine.takeItem) {
             gameObject.GetComponentInParent<PlayerController>().GetComponentInChildren<InventoryController>().RemoveItem(currentLine.takeItem, "Gave ");
         }
-        
+        float dialogueDuration = calculateDialogueDuration(currentLine.text);
         StartCoroutine(StartTimer(dialogueDuration));
     }
     
@@ -159,7 +159,7 @@ public class DialogueController : MonoBehaviour
         optionsTextPanel.SetActive(false);
         clearText();
         playerText.text = textToShow;
-        float dialogueDuration = (startBuffer + durationLength * textToShow.Length) / 1000;
+        float dialogueDuration = calculateDialogueDuration(textToShow);
         StartCoroutine(DisplayLookAtText(dialogueDuration));
     }
 
@@ -170,7 +170,7 @@ public class DialogueController : MonoBehaviour
         clearText();
         otherText.text = textToShow;
         otherText.color = npcCharacter.dialogueColor;
-        float dialogueDuration = (startBuffer + durationLength * textToShow.Length) / 1000;
+        float dialogueDuration = calculateDialogueDuration(textToShow);
         StartCoroutine(DisplayLookAtText(dialogueDuration));
     }
 
@@ -180,7 +180,7 @@ public class DialogueController : MonoBehaviour
         optionsTextPanel.SetActive(false);
         clearText();
         playerText.text = textToShow;
-        float dialogueDuration = (startBuffer + durationLength * textToShow.Length) / 1000;
+        float dialogueDuration = calculateDialogueDuration(textToShow);
         StartCoroutine(DisplayLookAtText(dialogueDuration));
     }
 
@@ -193,5 +193,8 @@ public class DialogueController : MonoBehaviour
         StopAllCoroutines();
         allowOverride = true;
     }
-}
 
+    private float calculateDialogueDuration(string text) {
+        return ((startBuffer + durationLength * text.Length) / 1000) * gameController.GetTextSpeed();
+    }
+}

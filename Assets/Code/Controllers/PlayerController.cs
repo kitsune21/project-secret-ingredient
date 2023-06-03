@@ -25,10 +25,14 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "character") {
             if(!other.GetComponent<NPCCharacterController>().isTriggered) {
-                navMeshAgent.SetDestination(transform.position);
-                other.GetComponent<NPCCharacterController>().StartConversationWithNPC();
+                if(other.GetComponent<NPCCharacterController>().isClicked) {
+                    navMeshAgent.SetDestination(transform.position);
+                    other.GetComponent<NPCCharacterController>().StartConversationWithNPC();
+                    other.GetComponent<NPCCharacterController>().isClicked = false;
+                }
             }
-        } else if(other.tag == "object") {
+        }
+        if(other.tag == "object") {
             if(other.GetComponent<ObjectController>().isClicked) {
                 navMeshAgent.SetDestination(transform.position);
                 other.GetComponent<ObjectController>().HandleInteraction();

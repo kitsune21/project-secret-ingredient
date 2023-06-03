@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class NPCCharacterController : MonoBehaviour
 {
     public Character myCharacter;
-    private bool isClicked;
+    public bool isClicked;
     private bool isHovering = false;
     public bool isTriggered;
     private NavMeshAgent navMeshAgent;
@@ -27,7 +27,7 @@ public class NPCCharacterController : MonoBehaviour
         navMeshAgent.isStopped = true;
     }
 
-    void FixedUpdate() {
+    void Update() {
         if(playerState == null) {
             playerState = player.GetPlayerStateController();
         }
