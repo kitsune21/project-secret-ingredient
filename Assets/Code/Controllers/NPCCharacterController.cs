@@ -49,7 +49,6 @@ public class NPCCharacterController : MonoBehaviour
                 }
                 dialogueController.StartConversation(myCharacter, isGivenWantedItem);
                 interactableTextController.UpdateMyText("");
-                isHovering = false;
                 isClicked = false;
             }
         }
@@ -74,7 +73,6 @@ public class NPCCharacterController : MonoBehaviour
     public void StartConversationWithNPC() {
         dialogueController.StartConversation(myCharacter, false);
         interactableTextController.UpdateMyText("");
-        isHovering = false;
         isClicked = false;
     }
 
@@ -82,7 +80,6 @@ public class NPCCharacterController : MonoBehaviour
         navMeshAgent.SetDestination(newPosition);
         isTriggered = true;
         dialogueController.showLookAtTextNPC(triggeredText, myCharacter);
-        isHovering = false;
         isClicked = false;
     }
 }

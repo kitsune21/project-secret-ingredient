@@ -30,10 +30,7 @@ public class ObjectController : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-        playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
-        if(playerState.GetPlayerState() == PlayerState.Playing || playerState.GetPlayerState() == PlayerState.DraggingInventory) {
-            isHovering = true;
-        }
+        isHovering = true;
     }
 
     private void OnMouseExit()
@@ -50,6 +47,9 @@ public class ObjectController : MonoBehaviour {
             if (isHovering)
             {
                 interactableTextController.UpdateMyText(onHoverText);
+                if(playerState.GetPlayerState() == PlayerState.InDialogue) {
+                    interactableTextController.UpdateMyText("");
+                }
                 if(Input.GetMouseButtonDown(0)) {
                     isClicked = true;
                 }
@@ -57,16 +57,23 @@ public class ObjectController : MonoBehaviour {
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other) {
+        if(other.tag == "Player") {
+            if(isClicked) {
+                HandleInteraction();
+            }
+        }
+    }
+
     public void HandleInteraction()
-    { 
-        isHovering = false;
+    {
+        isClicked = false;
         if(myItem) {
             player.GetComponentInChildren<InventoryController>().AddItem(myItem, "Picked up ");
             interactableTextController.UpdateMyText("");
             Destroy(gameObject);
         }
         if(myCharacter) {
-            isClicked = false;
             DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
             bool isGivenWantedItem = false;
             if(dragItemController.myItem && dragItemController.myItem.id == myCharacter.wantedItem.id) {
@@ -76,7 +83,6 @@ public class ObjectController : MonoBehaviour {
             player.GetComponentInChildren<DialogueController>().StartConversation(myCharacter, isGivenWantedItem);
         }
         if(myPuzzle && myPuzzle.requiredItem) {
-            isClicked = false;
             DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
             if(dragItemController.myItem && dragItemController.myItem.id == myPuzzle.requiredItem.id) {
                 dragItemController.StopDragging();

@@ -20,11 +20,22 @@ public class DialogueController : MonoBehaviour
     private PlayerStateController playerState;
     private bool allowOverride;
     public GameController gameController;
+    public GameObject hintText;
 
     void Start() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
         allowOverride = true;
+    }
+
+    void Update() {
+        if(playerState.GetPlayerState() == PlayerState.InDialogue) {
+            if(!optionsTextPanel.activeSelf) {
+                if(Input.GetKeyDown(KeyCode.Q)) {
+                    AdvanceToNextLine();
+                }
+            }
+        }
     }
     
     public void StartConversation(Character newCharacter, bool isGivenWantedItem)
@@ -77,6 +88,10 @@ public class DialogueController : MonoBehaviour
     private void AdvanceToNextLine()
     {
         currentLineIndex++;
+        StopAllCoroutines();
+        if(hintText) {
+            Destroy(hintText);
+        }
         if (currentLineIndex >= currentDialogue.lines.Length)
         {
             EndConversation();

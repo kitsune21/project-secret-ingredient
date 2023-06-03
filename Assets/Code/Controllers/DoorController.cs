@@ -26,10 +26,7 @@ public class DoorController : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
-        if(playerState.GetPlayerState() == PlayerState.Playing || playerState.GetPlayerState() == PlayerState.DraggingInventory) {
-            isHovering = true;
-        }
+        isHovering = true;
     }
 
     private void OnMouseExit()
@@ -42,6 +39,9 @@ public class DoorController : MonoBehaviour
         if (isHovering)
         {
             interactableTextController.UpdateMyText(onHoverText);
+            if(playerState.GetPlayerState() == PlayerState.InDialogue) {
+                interactableTextController.UpdateMyText("");
+            }
             if(Input.GetMouseButtonDown(0)) {
                 isClicked = true;
             }

@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour {
     }
 
     void Update() {
-        if(playerState.GetPlayerState() == PlayerState.Playing || playerState.GetPlayerState() == PlayerState.InMenu) {
+        if(playerState.GetPlayerState() == PlayerState.Playing || playerState.GetPlayerState() == PlayerState.InMenu || playerState.GetPlayerState() == PlayerState.Victory) {
             if(Input.GetKeyDown(KeyCode.Escape)) {
                 openMenu = !openMenu;
                 settingsPanel.GetComponent<Animator>().SetBool("open-game-menu", openMenu);
