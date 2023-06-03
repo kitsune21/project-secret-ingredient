@@ -68,6 +68,7 @@ public class NPCCharacterController : MonoBehaviour
     private void OnMouseExit()
     {
         isHovering = false;
+        interactableTextController.UpdateMyText("");
     }
 
     public void StartConversationWithNPC() {

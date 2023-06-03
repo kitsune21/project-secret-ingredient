@@ -9,20 +9,24 @@ public class GameController : MonoBehaviour {
     public GameObject settingsPanel;
     private bool openMenu = false;
     public Slider textSpeedSlider;
+    private PlayerStateController playerState;
 
     void Start() {
         textSpeedSlider.value = textSpeedSlider.maxValue;
         DontDestroyOnLoad(gameObject);
+        playerState = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().GetPlayerStateController();
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
-            openMenu = !openMenu;
-            settingsPanel.GetComponent<Animator>().SetBool("open-game-menu", openMenu);
-            if(openMenu) {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().GetPlayerStateController().UpdatePlayerState(PlayerState.InInventory);
-            } else {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().GetPlayerStateController().UpdatePlayerState(PlayerState.Playing);
+        if(playerState.GetPlayerState() == PlayerState.Playing || playerState.GetPlayerState() == PlayerState.InMenu) {
+            if(Input.GetKeyDown(KeyCode.Escape)) {
+                openMenu = !openMenu;
+                settingsPanel.GetComponent<Animator>().SetBool("open-game-menu", openMenu);
+                if(openMenu) {
+                    playerState.UpdatePlayerState(PlayerState.InMenu);
+                } else {
+                    playerState.UpdatePlayerState(PlayerState.Playing);
+                }
             }
         }
     }

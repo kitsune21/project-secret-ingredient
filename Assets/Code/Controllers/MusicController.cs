@@ -10,6 +10,37 @@ public class MusicController : MonoBehaviour
     private AudioSource player;
     public float volume;
     private bool isPlaying1;
+    private static MusicController instance;
+
+    public static MusicController Instance{
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<MusicController>();
+                if (instance == null)
+                {
+                    GameObject singletonObject = new GameObject(typeof(MusicController).Name);
+                    instance = singletonObject.AddComponent<MusicController>();
+                    DontDestroyOnLoad(singletonObject);
+                }
+            }
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public List<ClipScript> songs = new List<ClipScript>();
     private ClipScript currentClip;
