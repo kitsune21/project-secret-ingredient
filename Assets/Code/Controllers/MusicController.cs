@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicController : MonoBehaviour
 {
@@ -19,11 +20,10 @@ public class MusicController : MonoBehaviour
         audioPlayer2 = gameObject.AddComponent<AudioSource>();
         player = audioPlayer1;
         loopClip("Ikebukuro");
-        updateVolume(0.5f);
         isPlaying1 = true;
         DontDestroyOnLoad(gameObject);
+        updateVolume(5);
     }
-
 
     private ClipScript stringToClip(string clip)
     {
@@ -67,12 +67,11 @@ public class MusicController : MonoBehaviour
         }
     }
 
-    public void updateVolume(float newVolume)
+    public void updateVolume(float newVolume = 5f)
     {
-        volume = newVolume;
+        float newVolumeConvertedToDecimal = newVolume / 10;
+        volume = newVolumeConvertedToDecimal;
         player.volume = volume;
-        float volumeText = newVolume * 10;
-        int volumeTextInt = (int)volumeText;
     }
 
     public bool isClipPlaying(string clip)

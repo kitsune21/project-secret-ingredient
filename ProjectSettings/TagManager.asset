@@ -12,6 +12,7 @@ TagManager:
   - object
   - door
   - music
+  - music_volume
   layers:
   - Default
   - TransparentFX

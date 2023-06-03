@@ -21,6 +21,7 @@ public class MainMenuController : MonoBehaviour
     private bool isSettings;
     private bool isExit;
     public GameObject settingsPanel;
+    public GameObject musicSetting;
      
     void Start()
     {

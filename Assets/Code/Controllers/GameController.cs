@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void resetGame() {
+        Destroy(GameObject.Find("MusicController"));
         SceneManager.LoadScene("MainMenu");
     }
 
