@@ -67,17 +67,23 @@ public class MainMenuController : MonoBehaviour
         inventoryIcon.GetComponent<Image>().sprite = playImage;
         inventoryIcon.GetComponent<Image>().color = Color.white;
         isPlay = true;
+        isSettings = false;
+        isExit = false;
     }
 
     public void SelectSettings() {
         inventoryIcon.GetComponent<Image>().sprite = settingsImage;
         inventoryIcon.GetComponent<Image>().color = Color.white;
+        isPlay = false;
         isSettings = true;
+        isExit = false;
     }
 
     public void SelectExit() {
         inventoryIcon.GetComponent<Image>().sprite = exitImage;
         inventoryIcon.GetComponent<Image>().color = Color.white;
+        isPlay = false;
+        isSettings = false;
         isExit = true;
     }
 
