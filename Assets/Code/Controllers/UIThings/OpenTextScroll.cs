@@ -21,6 +21,9 @@ public class OpenTextScroll : MonoBehaviour
     void Update()
     {
         myRect.anchoredPosition = new Vector2(myRect.anchoredPosition.x, myRect.anchoredPosition.y + scrollSpeed);
+        if(Input.GetKey(KeyCode.Space)) {
+            myRect.anchoredPosition = new Vector2(myRect.anchoredPosition.x, myRect.anchoredPosition.y + (scrollSpeed * 4));
+        }
         if(myRect.anchoredPosition.y > 950) {
             Camera.main.GetComponent<CameraController>().UpdateStartLoction(startPosition.transform);
             GameObject.Find("Player").GetComponent<PlayerController>().GetPlayerStateController().UpdatePlayerState(PlayerState.Playing);
