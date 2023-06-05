@@ -71,6 +71,9 @@ public class MusicController : MonoBehaviour
 
     public void loopClip(string clip)
     {
+        if(clip == currentClip?.clipName) {
+            return;
+        }
         currentClip = stringToClip(clip);
         player.clip = currentClip.clip;
         player.loop = true;
@@ -126,6 +129,10 @@ public class MusicController : MonoBehaviour
     }
 
     public void crossFadeClip(string clip) {
+        if(clip == currentClip.clipName) {
+            return;
+        }
+
         StopAllCoroutines();
 
         StartCoroutine(FadeTrack(clip));
