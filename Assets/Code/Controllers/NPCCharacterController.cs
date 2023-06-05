@@ -45,8 +45,8 @@ public class NPCCharacterController : MonoBehaviour
                 bool isGivenWantedItem = false;
                 if(dragItemController.myItem && dragItemController.myItem.id == myCharacter.wantedItem.id) {
                     isGivenWantedItem = true;
-                    dragItemController.StopDragging();
                 }
+                dragItemController.StopDragging();
                 dialogueController.StartConversation(myCharacter, isGivenWantedItem);
                 interactableTextController.UpdateMyText("");
                 isClicked = false;
