@@ -50,7 +50,7 @@ public class MusicController : MonoBehaviour
         audioPlayer1 = gameObject.AddComponent<AudioSource>();
         audioPlayer2 = gameObject.AddComponent<AudioSource>();
         player = audioPlayer1;
-        loopClip("Ikebukuro");
+        loopClip("Menu");
         isPlaying1 = true;
         DontDestroyOnLoad(gameObject);
         updateVolume(5);

@@ -40,6 +40,14 @@ public class PlayerController : MonoBehaviour {
                 }
             }
         }
+        if(other.tag == "train_map") {
+            if(other.GetComponent<TrainMap>()) {
+                if(other.GetComponent<TrainMap>().isClicked) {
+                    navMeshAgent.SetDestination(transform.position);
+                    other.GetComponent<TrainMap>().HandleInteraction();
+                }
+            }
+        }
     }
 
     public float GetRemainingDistance() {

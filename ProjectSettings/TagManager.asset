@@ -13,6 +13,8 @@ TagManager:
   - door
   - music
   - music_volume
+  - music-volume
+  - train_map
   layers:
   - Default
   - TransparentFX
