@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
+        GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip("Shinagawa");
     }
 
     void Update() {
