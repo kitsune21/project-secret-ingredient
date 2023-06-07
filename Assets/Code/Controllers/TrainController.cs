@@ -14,7 +14,6 @@ public class TrainController : MonoBehaviour
     public GameObject closedDoors;
 
     public void SetStartingMachi(string startingMachi) {
-        Debug.Log(startingMachi);
         closedDoors.SetActive(true);
         doorShinjuku.SetActive(false);
         doorIkebukuro.SetActive(false);

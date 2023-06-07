@@ -25,6 +25,7 @@ public class NPCCharacterController : MonoBehaviour
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         navMeshAgent.isStopped = true;
+        myCharacter.resetDialogue();
     }
 
     void Update() {

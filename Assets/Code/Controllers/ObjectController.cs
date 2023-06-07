@@ -26,6 +26,9 @@ public class ObjectController : MonoBehaviour {
         if(myPuzzle) {
             myPuzzle.completed = false;
         }
+        if(myCharacter) {
+            myCharacter.resetDialogue();
+        }
     }
 
     private void OnMouseEnter()
@@ -61,6 +64,7 @@ public class ObjectController : MonoBehaviour {
         if(other.tag == "Player") {
             if(isClicked) {
                 HandleInteraction();
+                other.GetComponent<PlayerController>().TriggerIneraction();
             }
         }
     }
@@ -71,7 +75,7 @@ public class ObjectController : MonoBehaviour {
         if(myItem) {
             player.GetComponentInChildren<InventoryController>().AddItem(myItem, "Picked up ");
             interactableTextController.UpdateMyText("");
-            Destroy(gameObject);
+            Destroy(gameObject, 0.7f);
         }
         if(myCharacter) {
             DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();

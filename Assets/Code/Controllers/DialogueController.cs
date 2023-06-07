@@ -52,16 +52,21 @@ public class DialogueController : MonoBehaviour
         if(isGivenWantedItem) {
             currentDialogue = newCharacter.givenWantedItem;
         } else {
-            currentDialogue = newCharacter.myDialogue;
+            currentDialogue = newCharacter.getNextDialogue();
         }
-        clearText();
-        dialogueTextObject.SetActive(true);
-        currentLineIndex = 0;
-        DisplayCurrentLine();
+        if(currentDialogue) {
+            clearText();
+            dialogueTextObject.SetActive(true);
+            currentLineIndex = 0;
+            DisplayCurrentLine();
+        }
     }
     
     private void DisplayCurrentLine()
     {
+        if(currentDialogue.onlyUseOnce) {
+            currentDialogue.finishedThisOne = true;
+        }
         clearText();
         currentLine = currentDialogue.GetLine(currentLineIndex);
         if(currentLine.speakerId == 0) {

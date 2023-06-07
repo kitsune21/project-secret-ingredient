@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour {
     private InventoryController myInventory;
     private DialogueController dialogueController;
     public string currentMachi;
+    private Animator myAnim;
+    private SpriteRenderer mySprite;
+    private bool faceLeft;
 
     void Start() {
         playerState = GetComponentInChildren<PlayerStateController>();
@@ -15,6 +18,9 @@ public class PlayerController : MonoBehaviour {
         navMeshAgent.updateUpAxis = false;
         GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip("Shinagawa");
         currentMachi = "shinagawa";
+        faceLeft = false;
+        myAnim = GetComponent<Animator>();
+        mySprite = GetComponent<SpriteRenderer>();
     }
 
     void Update() {
@@ -22,7 +28,18 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetMouseButton(0)) {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 navMeshAgent.SetDestination(mousePosition);
+                if(mousePosition.x > transform.position.x) {
+                    faceLeft = false;
+                    mySprite.flipX = faceLeft;
+                } else {
+                    faceLeft = true;
+                    mySprite.flipX = faceLeft;
+                }
+                myAnim.SetBool("Walk", true);
             }
+        }
+        if(navMeshAgent.remainingDistance < 1) {
+            myAnim.SetBool("Walk", false);
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
@@ -40,6 +57,8 @@ public class PlayerController : MonoBehaviour {
                 if(other.GetComponent<ObjectController>().isClicked) {
                     navMeshAgent.SetDestination(transform.position);
                     other.GetComponent<ObjectController>().HandleInteraction();
+                    myAnim.SetBool("Walk", false);
+                    myAnim.SetTrigger("Interact");
                 }
             }
         }
@@ -48,6 +67,8 @@ public class PlayerController : MonoBehaviour {
                 if(other.GetComponent<TrainMap>().isClicked) {
                     navMeshAgent.SetDestination(transform.position);
                     other.GetComponent<TrainMap>().HandleInteraction();
+                    myAnim.SetBool("Walk", false);
+                    myAnim.SetTrigger("Interact");
                 }
             }
         }
@@ -73,5 +94,9 @@ public class PlayerController : MonoBehaviour {
 
     public PlayerStateController GetPlayerStateController() {
         return playerState;
+    }
+
+    public void TriggerIneraction() {
+        myAnim.SetTrigger("Interact");
     }
 }

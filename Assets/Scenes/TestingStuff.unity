@@ -1902,7 +1902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6602658311522579126, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
       propertyPath: m_Name
-      value: redbox
+      value: RamenCoupon
       objectReference: {fileID: 0}
     - target: {fileID: 6602658311522579127, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
       propertyPath: myItem
@@ -12062,6 +12062,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 778689129, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
+      propertyPath: nextScene
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 778689129, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
+      propertyPath: scrollSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 778689129, guid: 67cd7e8eb5d17404c850f2a937633669, type: 3}
       propertyPath: startPosition
       value: 
       objectReference: {fileID: 521891564}
@@ -12508,7 +12516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 961157108740907950, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.1
+      value: 35.617
       objectReference: {fileID: 0}
     - target: {fileID: 961157108740907950, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12546,6 +12554,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2874089408533150800, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2874089408533150800, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4841242522513918597, guid: 6d83e2d346ae36741a1168fe38166761, type: 3}
     - target: {fileID: 4637038270792454052, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
       propertyPath: endCredits
       value: 
@@ -12580,6 +12596,32 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 61f90fa35c8c05b49a6c975d3806154a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
+--- !u!1 &2299979662549512739 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 30407188102791338, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
+  m_PrefabInstance: {fileID: 2299979662549512738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2299979662549512740
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2299979662549512739}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4e7b034139506ff4fb1ee7676c761775, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &2827803118691166187
 PrefabInstance:
   m_ObjectHideFlags: 0

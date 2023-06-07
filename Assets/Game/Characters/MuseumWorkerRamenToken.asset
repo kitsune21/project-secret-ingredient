@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   characterName: Museum Worker
-  myDialogue: {fileID: 11400000, guid: 08aecac7b5d14f849a55b2fe4b12eea6, type: 2}
+  onHoverText: 
+  allDialogues:
+  - {fileID: 11400000, guid: 08aecac7b5d14f849a55b2fe4b12eea6, type: 2}
   dialogueColor: {r: 0, g: 0, b: 0, a: 1}
   wantedItem: {fileID: 0}
   givenWantedItem: {fileID: 0}

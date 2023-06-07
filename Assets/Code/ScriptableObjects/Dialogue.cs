@@ -5,6 +5,8 @@ public class Dialogue : ScriptableObject
 {
     public int id;
     public DialogueLine[] lines;
+    public bool finishedThisOne;
+    public bool onlyUseOnce;
     
     public DialogueLine GetLine(int index)
     {
