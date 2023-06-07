@@ -19,6 +19,7 @@ public class DoorController : MonoBehaviour
     public Item requiredItem;
     public string noItemYet;
     public string hideRoomName;
+    public string newCurrentMachi;
 
     void Start() {
         interactableTextController = GameObject.FindGameObjectWithTag("InteractableText").GetComponent<InteractableTextController>();
@@ -65,6 +66,7 @@ public class DoorController : MonoBehaviour
                             player.GetComponent<PlayerController>().SetNewDestination(doorExit);
                             Camera.main.GetComponent<CameraController>().UpdateStartLoction(newCameraStartLocation);
                             isClicked = false;
+                            myCurrentRoomMesh.SetActive(true);
                             if(mySong) {
                                 GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip(mySong.clipName);
                             }
@@ -78,9 +80,14 @@ public class DoorController : MonoBehaviour
                         player.GetComponent<PlayerController>().SetNewDestination(doorExit);
                         Camera.main.GetComponent<CameraController>().UpdateStartLoction(newCameraStartLocation);
                         isClicked = false;
+                        myCurrentRoomMesh.SetActive(true);
                         if(mySong) {
                             GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip(mySong.clipName);
                         }
+                    }
+                    GameObject.FindGameObjectWithTag("train").GetComponent<TrainController>().ExitTrain();
+                    if(newCurrentMachi.Length > 0) {
+                        player.GetComponent<PlayerController>().currentMachi = newCurrentMachi;
                     }
                 }
             }

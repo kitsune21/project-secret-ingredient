@@ -129,7 +129,7 @@ public class MusicController : MonoBehaviour
     }
 
     public void crossFadeClip(string clip) {
-        if(clip == currentClip.clipName) {
+        if(clip.Length == 0 || clip == currentClip?.clipName) {
             return;
         }
 

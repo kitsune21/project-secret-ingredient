@@ -38,5 +38,6 @@ public class TrainMapText : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         } else {
             GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().stopClip();
         }
+        GameObject.Find("Player").GetComponent<PlayerController>().GetPlayerStateController().UpdatePlayerState(PlayerState.Playing);
     }
 }

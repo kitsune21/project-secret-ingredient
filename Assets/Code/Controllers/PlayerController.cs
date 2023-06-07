@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     private PlayerStateController playerState;
     private InventoryController myInventory;
     private DialogueController dialogueController;
+    public string currentMachi;
 
     void Start() {
         playerState = GetComponentInChildren<PlayerStateController>();
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour {
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
         GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip("Shinagawa");
+        currentMachi = "shinagawa";
     }
 
     void Update() {

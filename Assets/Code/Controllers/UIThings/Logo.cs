@@ -7,9 +7,14 @@ public class Logo : MonoBehaviour
 {
     public string nextScene;
     public float logoDuration;
+    public float delayAuidoLength;
+    private AudioSource myAudio;
 
     void Start() {
+        myAudio = GetComponent<AudioSource>();
+        myAudio.Stop();
         StartCoroutine(NextScene(logoDuration));
+        StartCoroutine(DelayAuido());
     }
 
     void Update() {
@@ -25,5 +30,11 @@ public class Logo : MonoBehaviour
 
         SceneManager.LoadScene(nextScene);
         StopAllCoroutines();
+    }
+
+    private IEnumerator DelayAuido() {
+        yield return new WaitForSeconds(delayAuidoLength);
+
+        myAudio.Play();
     }
 }

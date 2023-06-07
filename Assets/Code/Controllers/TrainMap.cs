@@ -14,7 +14,7 @@ public class TrainMap : MonoBehaviour
     public bool isHovering;
     public bool isClicked;
     private InteractableTextController interactableTextController;
-    private string currentMachi = "shinjuku";
+    public string currentMachi;
     private PlayerController player;
 
     void Start() {
@@ -24,10 +24,12 @@ public class TrainMap : MonoBehaviour
     }
 
     void Update() {
-        if(isHovering) {
-            interactableTextController.UpdateMyText(onHoverText);
-            if(Input.GetMouseButtonDown(0)) {
-                isClicked = true;
+        if(player.GetPlayerStateController().GetPlayerState() == PlayerState.Playing) {
+            if(isHovering) {
+                interactableTextController.UpdateMyText(onHoverText);
+                if(Input.GetMouseButtonDown(0)) {
+                    isClicked = true;
+                }
             }
         }
     }
@@ -44,27 +46,35 @@ public class TrainMap : MonoBehaviour
     }
 
     public void UpdateMachi(string newMachi) {
-        currentMachi = newMachi;
-        if(currentMachi == "shinjuku") {
-            player.SetNewDestination(shinjuku);
-        }
-        if(currentMachi == "ikebukuro") {
-            player.SetNewDestination(ikebukuro);
-        }
-        if(currentMachi == "akihabara") {
-            player.SetNewDestination(akihabara);
-        }
-        if(currentMachi == "shinagawa") {
-            player.SetNewDestination(shinagawa);
-        }
-        if(currentMachi == "train") {
-            player.SetNewDestination(train);
-        }
+        isClicked = false;
         mapPanel.SetActive(false);
+        if(newMachi == "shinjuku") {
+            player.SetNewDestination(shinjuku);
+            player.currentMachi = newMachi;
+        }
+        if(newMachi == "ikebukuro") {
+            player.SetNewDestination(ikebukuro);
+            player.currentMachi = newMachi;
+        }
+        if(newMachi == "akihabara") {
+            player.SetNewDestination(akihabara);
+            player.currentMachi = newMachi;
+        }
+        if(newMachi == "shinagawa") {
+            player.SetNewDestination(shinagawa);
+            player.currentMachi = newMachi;
+        }
+        if(newMachi == "train") {
+            player.SetNewDestination(train);
+            GameObject.FindGameObjectWithTag("train").GetComponent<TrainController>().SetStartingMachi(player.currentMachi);
+            player.currentMachi = newMachi;
+        }
+        isClicked = false;
     }
 
     public void HandleInteraction() {
         mapPanel.SetActive(true);
         isClicked = false;
+        player.GetPlayerStateController().UpdatePlayerState(PlayerState.InScene);
     }
 }

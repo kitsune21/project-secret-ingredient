@@ -15,6 +15,7 @@ TagManager:
   - music_volume
   - music-volume
   - train_map
+  - train
   layers:
   - Default
   - TransparentFX
