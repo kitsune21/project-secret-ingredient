@@ -84,7 +84,9 @@ public class ObjectController : MonoBehaviour {
                 isGivenWantedItem = true;
                 dragItemController.StopDragging();
             }
-            player.GetComponentInChildren<DialogueController>().StartConversation(myCharacter, isGivenWantedItem);
+            if(myCharacter.allDialogues.Count > 0) {
+                player.GetComponentInChildren<DialogueController>().StartConversation(myCharacter, isGivenWantedItem);
+            }
         }
         if(myPuzzle && myPuzzle.requiredItem) {
             DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();

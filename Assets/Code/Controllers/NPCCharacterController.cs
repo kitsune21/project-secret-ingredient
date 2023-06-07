@@ -15,6 +15,7 @@ public class NPCCharacterController : MonoBehaviour
     private PlayerStateController playerState;
     private InteractableTextController interactableTextController;
     public string triggeredText;
+    public bool noInteraction;
 
     void Start() {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -24,7 +25,6 @@ public class NPCCharacterController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
-        navMeshAgent.isStopped = true;
         myCharacter.resetDialogue();
     }
 
@@ -39,7 +39,7 @@ public class NPCCharacterController : MonoBehaviour
                 isClicked = true;
             }
         }
-        if(isClicked) {
+        if(isClicked && !noInteraction) {
             float distance = Vector3.Distance(transform.position, player.transform.position);
             if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.5f && distance < 4f) {
                 DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
@@ -82,5 +82,18 @@ public class NPCCharacterController : MonoBehaviour
         isTriggered = true;
         dialogueController.showLookAtTextNPC(triggeredText, myCharacter);
         isClicked = false;
+    }
+
+    public void SetNewDestination(Transform newPos) {
+        navMeshAgent.SetDestination(newPos.position);
+    }
+
+    public void ChangeDialogue(Dialogue newDialogue) {
+        myCharacter.allDialogues.Clear();
+        myCharacter.allDialogues.Add(newDialogue);
+    }
+
+    public void ClearDialoge() {
+        myCharacter.allDialogues.Clear();
     }
 }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c39600bb7931074e9a4921489fb4413, type: 3}
+  m_Name: Line1
+  m_EditorClassIdentifier: 
+  id: 1
+  speakerId: 2
+  text: What can I get you sir?
+  playerHasItem: 
+  options:
+  - {fileID: 11400000, guid: c3e294fd676be2e4a98450ce6efc9173, type: 2}
+  - {fileID: 11400000, guid: a2a92b048aca6374399e8caaafa867de, type: 2}
+  - {fileID: 11400000, guid: eab4578f733698b4db5592fcc2233776, type: 2}
+  - {fileID: 11400000, guid: 3d44e48a4ca98f54c87c3301b5b9f474, type: 2}
+  - {fileID: 11400000, guid: 5304249371a67b9429e2085b69c25697, type: 2}
+  - {fileID: 11400000, guid: 4e897de727119164987c2a68436f2718, type: 2}
+  - {fileID: 11400000, guid: 5e5013613b18f0741b87d1a9214d4fd3, type: 2}
+  - {fileID: 11400000, guid: dfb8b80920110b541bd855eaeb862357, type: 2}
+  giveItem: {fileID: 0}
+  takeItem: {fileID: 0}

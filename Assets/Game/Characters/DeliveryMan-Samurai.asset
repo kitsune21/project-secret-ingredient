@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 834ee130117ff1242a2be889baab0479, type: 3}
-  m_Name: DeliveryDriver
+  m_Name: DeliveryMan-Samurai
   m_EditorClassIdentifier: 
-  id: 8
-  characterName: Delivery Driver
-  onHoverText: Delivery Driver
+  id: 20
+  characterName: Delivery Man
+  onHoverText: Delivery Man
   allDialogues:
-  - {fileID: 11400000, guid: 29b027aeb0864c94eb509aec446106ce, type: 2}
+  - {fileID: 11400000, guid: 3fa97f6b1c16925498c5e580e9f01a8d, type: 2}
   dialogueColor: {r: 0, g: 0, b: 0, a: 1}
   wantedItem: {fileID: 0}
   givenWantedItem: {fileID: 0}
