@@ -41,6 +41,7 @@ public class DialogueController : MonoBehaviour
     
     public void StartConversation(Character newCharacter, bool isGivenWantedItem, NPCCharacterController newNPC = null)
     {
+        GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>().StopDragging();
         if(hintText) {
             hintText.SetActive(true);
         }

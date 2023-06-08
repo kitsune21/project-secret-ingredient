@@ -15,7 +15,10 @@ MonoBehaviour:
   id: 10
   characterName: Worker
   onHoverText: Worker
-  myDialogue: {fileID: 0}
-  dialogueColor: {r: 0, g: 0, b: 0, a: 0}
+  allDialogues:
+  - {fileID: 11400000, guid: 20ebc4f6e1cac204394a1afe1336bc3e, type: 2}
+  startingDialogues:
+  - {fileID: 11400000, guid: 20ebc4f6e1cac204394a1afe1336bc3e, type: 2}
+  dialogueColor: {r: 0, g: 0, b: 0, a: 1}
   wantedItem: {fileID: 0}
   givenWantedItem: {fileID: 0}

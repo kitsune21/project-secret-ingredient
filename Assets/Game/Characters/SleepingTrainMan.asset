@@ -15,7 +15,9 @@ MonoBehaviour:
   id: 11
   characterName: Sleeping Man
   onHoverText: Sleeping Man
-  myDialogue: {fileID: 0}
+  allDialogues: []
+  startingDialogues:
+  - {fileID: 11400000, guid: 561e85f9b25b81b45a4d085f963b955e, type: 2}
   dialogueColor: {r: 0, g: 0, b: 0, a: 0}
   wantedItem: {fileID: 0}
   givenWantedItem: {fileID: 0}
