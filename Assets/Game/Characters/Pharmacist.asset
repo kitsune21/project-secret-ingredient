@@ -18,6 +18,9 @@ MonoBehaviour:
   allDialogues:
   - {fileID: 11400000, guid: ae36339c06c045a4bae1d3561631ef51, type: 2}
   - {fileID: 11400000, guid: 203cc8d3ca0b7c84aae74c6f794faca6, type: 2}
+  startingDialogues:
+  - {fileID: 11400000, guid: ae36339c06c045a4bae1d3561631ef51, type: 2}
+  - {fileID: 11400000, guid: 203cc8d3ca0b7c84aae74c6f794faca6, type: 2}
   dialogueColor: {r: 0, g: 0, b: 0, a: 1}
   wantedItem: {fileID: 0}
   givenWantedItem: {fileID: 0}

@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aa46dc77cde58a4ba912ca15325123a, type: 3}
-  m_Name: Option1
+  m_Script: {fileID: 11500000, guid: 5c39600bb7931074e9a4921489fb4413, type: 3}
+  m_Name: Line1
   m_EditorClassIdentifier: 
   id: 1
-  optionText: Yes!
-  requiredItem: {fileID: 11400000, guid: bae01abbeaa24b54898dfefda6e4222e, type: 2}
-  nextDialogue: {fileID: 11400000, guid: 1b9b67baace795c47a939e31b4094407, type: 2}
+  speakerId: 2
+  text: Thanks so much for finding my cat. I wish you the best of luck on your quest.
+  playerHasItem: 
+  options: []
+  giveItem: {fileID: 0}
+  takeItem: {fileID: 0}

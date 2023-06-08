@@ -17,6 +17,8 @@ MonoBehaviour:
   onHoverText: Delivery Man
   allDialogues:
   - {fileID: 11400000, guid: 3fa97f6b1c16925498c5e580e9f01a8d, type: 2}
+  startingDialogues:
+  - {fileID: 11400000, guid: 3fa97f6b1c16925498c5e580e9f01a8d, type: 2}
   dialogueColor: {r: 0, g: 0, b: 0, a: 1}
   wantedItem: {fileID: 0}
   givenWantedItem: {fileID: 0}

@@ -2675,6 +2675,7 @@ MonoBehaviour:
   triggeredText: Oh! Not again!
   noInteraction: 0
   myPuzzle: {fileID: 0}
+  overwriteDialogueObj: {fileID: 0}
 --- !u!195 &354398144
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4283,6 +4284,8 @@ MonoBehaviour:
   myPuzzle: {fileID: 11400000, guid: 7e6677f3403d9e140aa88d221476fce5, type: 2}
   characterToTrigger: {fileID: 0}
   triggerLocation: {fileID: 0}
+  disapearOnCompletePuzzle: 0
+  thingsToDisapear: []
 --- !u!114 &626032263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6820,6 +6823,8 @@ MonoBehaviour:
   myPuzzle: {fileID: 11400000, guid: d0aacc32844600549b1137b0b8709e6e, type: 2}
   characterToTrigger: {fileID: 354398143}
   triggerLocation: {fileID: 650941533}
+  disapearOnCompletePuzzle: 0
+  thingsToDisapear: []
 --- !u!114 &881226803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7135,7 +7140,6 @@ GameObject:
   - component: {fileID: 903578635}
   - component: {fileID: 903578634}
   - component: {fileID: 903578633}
-  - component: {fileID: 903578632}
   - component: {fileID: 903578631}
   m_Layer: 0
   m_Name: Mom
@@ -7176,31 +7180,10 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2.000002
-  m_BaseOffset: 1
+  m_Height: 1.9999895
+  m_BaseOffset: 0.99999475
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!50 &903578632
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903578629}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1000000
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!61 &903578633
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7296,6 +7279,7 @@ MonoBehaviour:
   triggeredText: 
   noInteraction: 0
   myPuzzle: {fileID: 0}
+  overwriteDialogueObj: {fileID: 0}
 --- !u!1001 &908578922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7550,6 +7534,8 @@ MonoBehaviour:
   myPuzzle: {fileID: 0}
   characterToTrigger: {fileID: 0}
   triggerLocation: {fileID: 0}
+  disapearOnCompletePuzzle: 0
+  thingsToDisapear: []
 --- !u!114 &972868559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8294,6 +8280,8 @@ MonoBehaviour:
   myPuzzle: {fileID: 0}
   characterToTrigger: {fileID: 0}
   triggerLocation: {fileID: 0}
+  disapearOnCompletePuzzle: 0
+  thingsToDisapear: []
 --- !u!61 &1158590953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8689,6 +8677,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: redbox
       objectReference: {fileID: 0}
+    - target: {fileID: 6602658311522579131, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602658311522579131, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
 --- !u!4 &1248435825 stripped
@@ -8791,7 +8787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6602658311522579127, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
       propertyPath: onHoldText
-      value: I don't want to get involved.
+      value: Looks like uncles cat. But I don't want to get involved.
       objectReference: {fileID: 0}
     - target: {fileID: 6602658311522579127, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
       propertyPath: onHoverText
@@ -9114,6 +9110,8 @@ MonoBehaviour:
   myPuzzle: {fileID: 0}
   characterToTrigger: {fileID: 0}
   triggerLocation: {fileID: 0}
+  disapearOnCompletePuzzle: 0
+  thingsToDisapear: []
 --- !u!114 &1360252863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9435,6 +9433,8 @@ MonoBehaviour:
   myPuzzle: {fileID: 0}
   characterToTrigger: {fileID: 0}
   triggerLocation: {fileID: 0}
+  disapearOnCompletePuzzle: 0
+  thingsToDisapear: []
 --- !u!61 &1391681542
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9543,6 +9543,8 @@ MonoBehaviour:
   myPuzzle: {fileID: 11400000, guid: 5767c95f8d52b4a40958984fa672c0b4, type: 2}
   characterToTrigger: {fileID: 0}
   triggerLocation: {fileID: 0}
+  disapearOnCompletePuzzle: 0
+  thingsToDisapear: []
 --- !u!114 &1393063281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11704,6 +11706,10 @@ PrefabInstance:
       propertyPath: myCharacter
       value: 
       objectReference: {fileID: 11400000, guid: b6940470a92ff404abac8c6b699f4536, type: 2}
+    - target: {fileID: 2901039511706648525, guid: a183ed7c6adb5ca4585ee6d7ecacc4e8, type: 3}
+      propertyPath: overwriteDialogueObj
+      value: 
+      objectReference: {fileID: 11400000, guid: 06f56c19c0a3aa44d9f9effcc88d1c14, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a183ed7c6adb5ca4585ee6d7ecacc4e8, type: 3}
 --- !u!4 &1627258694 stripped
@@ -12276,6 +12282,14 @@ PrefabInstance:
       value: AlleyCat
       objectReference: {fileID: 0}
     - target: {fileID: 6602658311522579127, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
+      propertyPath: myItem
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602658311522579127, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
+      propertyPath: myPuzzle
+      value: 
+      objectReference: {fileID: 11400000, guid: 62dd7b4167259b743a542cdab25c733e, type: 2}
+    - target: {fileID: 6602658311522579127, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
       propertyPath: onHoldText
       value: I don't want to get involved.
       objectReference: {fileID: 0}
@@ -12283,6 +12297,18 @@ PrefabInstance:
       propertyPath: onHoverText
       value: Two cats
       objectReference: {fileID: 0}
+    - target: {fileID: 6602658311522579127, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
+      propertyPath: disapearOnCompletePuzzle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602658311522579127, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
+      propertyPath: thingsToDisapear.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6602658311522579127, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
+      propertyPath: thingsToDisapear.Array.data[0]
+      value: 
+      objectReference: {fileID: 1912759201}
     - target: {fileID: 6602658311522579131, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.5
@@ -13045,6 +13071,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1912759201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6602658311522579126, guid: dd4c942b2530b0948aeb34891c50eb80, type: 3}
+  m_PrefabInstance: {fileID: 1310281131}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1915171048
 GameObject:
   m_ObjectHideFlags: 0
@@ -15697,6 +15728,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7731088185425293443, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
       propertyPath: startingItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 61f90fa35c8c05b49a6c975d3806154a, type: 2}
+    - target: {fileID: 7731088185425293443, guid: e9eaa20e1a00e7544a063f45f243e6d5, type: 3}
+      propertyPath: startingItems.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 61f90fa35c8c05b49a6c975d3806154a, type: 2}
     m_RemovedComponents: []

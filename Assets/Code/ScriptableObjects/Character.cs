@@ -9,6 +9,7 @@ public class Character : ScriptableObject
     public string characterName;
     public string onHoverText;
     public List<Dialogue> allDialogues = new List<Dialogue>();
+    public List<Dialogue> startingDialogues = new List<Dialogue>();
     public Color dialogueColor;
     public Item wantedItem;
     public Dialogue givenWantedItem;
@@ -24,8 +25,10 @@ public class Character : ScriptableObject
     }
 
     public void resetDialogue() {
-        foreach (Dialogue dialogue in allDialogues) {
-            dialogue.finishedThisOne = false;
+        allDialogues.Clear();
+        foreach (Dialogue dia in startingDialogues) {
+            dia.finishedThisOne = false;
+            allDialogues.Add(dia);
         }
     }
 

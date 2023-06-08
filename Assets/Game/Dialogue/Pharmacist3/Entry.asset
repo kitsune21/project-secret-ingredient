@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea25e5049479354994eb2f997038e03, type: 3}
   m_Name: Entry
   m_EditorClassIdentifier: 
-  id: 1
+  id: 0
   lines:
-  - {fileID: 11400000, guid: 0ba7680e80a6e144188030d9374989d4, type: 2}
-  - {fileID: 11400000, guid: 0bbe4fcf866c5774ea80118349ac2d30, type: 2}
-  - {fileID: 11400000, guid: a95bdcce05d24944c8ae8de580bc6e90, type: 2}
+  - {fileID: 11400000, guid: a11f8379e3bec334ab1a63182d4c7383, type: 2}
   finishedThisOne: 0
-  onlyUseOnce: 1
-  overWriteDialogueAfterThisOne: 0
+  onlyUseOnce: 0

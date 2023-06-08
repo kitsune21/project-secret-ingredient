@@ -16,6 +16,8 @@ public class ObjectController : MonoBehaviour {
     public Puzzle myPuzzle;
     public NPCCharacterController characterToTrigger;
     public GameObject triggerLocation;
+    public bool disapearOnCompletePuzzle;
+    public List<GameObject> thingsToDisapear = new List<GameObject>();
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
@@ -139,6 +141,12 @@ public class ObjectController : MonoBehaviour {
         }
         if(myPuzzle.giveItem) {
             player.GetComponentInChildren<InventoryController>().AddItem(myPuzzle.giveItem, "Picked up ");
+        }
+        if(disapearOnCompletePuzzle) {
+            gameObject.SetActive(false);
+            foreach(GameObject thing in thingsToDisapear) {
+                thing.SetActive(false);
+            }
         }
     }
 }

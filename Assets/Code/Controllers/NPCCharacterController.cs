@@ -17,6 +17,7 @@ public class NPCCharacterController : MonoBehaviour
     public string triggeredText;
     public bool noInteraction;
     public Puzzle myPuzzle;
+    public Dialogue overwriteDialogueObj;
 
     void Start() {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -42,17 +43,21 @@ public class NPCCharacterController : MonoBehaviour
         }
         if(isClicked && !noInteraction) {
             float distance = Vector3.Distance(transform.position, player.transform.position);
-            if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.5f && distance < 4f) {
-                DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
-                bool isGivenWantedItem = false;
-                if(dragItemController.myItem && dragItemController.myItem.id == myCharacter.wantedItem.id) {
-                    isGivenWantedItem = true;
+            if(playerState.GetPlayerState() == PlayerState.Playing) {
+                if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.5f && distance < 4f) {
+                    DragItemController dragItemController = GameObject.FindGameObjectWithTag("DragItem").GetComponent<DragItemController>();
+                    bool isGivenWantedItem = false;
+                    if(dragItemController.myItem && dragItemController.myItem.id == myCharacter.wantedItem.id) {
+                        isGivenWantedItem = true;
+                    }
+                    dragItemController.StopDragging();
+                    dialogueController.StartConversation(myCharacter, isGivenWantedItem, this);
+                    interactableTextController.UpdateMyText("");
+                    if(myPuzzle) {
+                        myPuzzle.completed = true;
+                    }
+                    isClicked = false;
                 }
-                dragItemController.StopDragging();
-                dialogueController.StartConversation(myCharacter, isGivenWantedItem);
-                interactableTextController.UpdateMyText("");
-                myPuzzle.completed = true;
-                isClicked = false;
             }
         }
     }
@@ -74,7 +79,7 @@ public class NPCCharacterController : MonoBehaviour
     }
 
     public void StartConversationWithNPC() {
-        dialogueController.StartConversation(myCharacter, false);
+        dialogueController.StartConversation(myCharacter, false, this);
         interactableTextController.UpdateMyText("");
         if(myPuzzle) {
             myPuzzle.completed = true;
@@ -100,5 +105,10 @@ public class NPCCharacterController : MonoBehaviour
 
     public void ClearDialoge() {
         myCharacter.allDialogues.Clear();
+    }
+
+    public void OverWriteDialogue() {
+        myCharacter.allDialogues.Clear();
+        myCharacter.allDialogues.Add(overwriteDialogueObj);
     }
 }

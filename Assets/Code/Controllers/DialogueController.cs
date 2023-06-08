@@ -21,6 +21,7 @@ public class DialogueController : MonoBehaviour
     private bool allowOverride;
     public GameController gameController;
     public GameObject hintText;
+    public NPCCharacterController myNPC;
 
     void Start() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -38,10 +39,13 @@ public class DialogueController : MonoBehaviour
         }
     }
     
-    public void StartConversation(Character newCharacter, bool isGivenWantedItem)
+    public void StartConversation(Character newCharacter, bool isGivenWantedItem, NPCCharacterController newNPC = null)
     {
         if(hintText) {
             hintText.SetActive(true);
+        }
+        if(newNPC) {
+            myNPC = newNPC;
         }
         StopAllCoroutines();
         optionsTextPanel.SetActive(false);
@@ -66,6 +70,9 @@ public class DialogueController : MonoBehaviour
     {
         if(currentDialogue.onlyUseOnce) {
             currentDialogue.finishedThisOne = true;
+        }
+        if(currentDialogue.overWriteDialogueAfterThisOne) {
+            myNPC.OverWriteDialogue();
         }
         clearText();
         currentLine = currentDialogue.GetLine(currentLineIndex);

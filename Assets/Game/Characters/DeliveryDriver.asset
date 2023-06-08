@@ -15,8 +15,10 @@ MonoBehaviour:
   id: 8
   characterName: Delivery Driver
   onHoverText: Delivery Driver
-  allDialogues:
+  allDialogues: []
+  startingDialogues:
   - {fileID: 11400000, guid: 29b027aeb0864c94eb509aec446106ce, type: 2}
+  - {fileID: 11400000, guid: 1a0ac16d0c29a3b4284238dd6cda9fcb, type: 2}
   dialogueColor: {r: 0, g: 0, b: 0, a: 1}
   wantedItem: {fileID: 0}
   givenWantedItem: {fileID: 0}

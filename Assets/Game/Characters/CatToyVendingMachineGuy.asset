@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 21
   characterName: Arcade Fanatic
   onHoverText: 
-  allDialogues:
+  allDialogues: []
+  startingDialogues:
   - {fileID: 11400000, guid: d2152d15df7bf224787420a40ff20c89, type: 2}
   dialogueColor: {r: 0.9245283, g: 0, b: 0, a: 1}
   wantedItem: {fileID: 0}
