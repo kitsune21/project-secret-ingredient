@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 5
   characterName: Samurai Guard
   onHoverText: Samurai Guard
-  myDialogue: {fileID: 0}
+  allDialogues:
+  - {fileID: 11400000, guid: d1b286721f948fc478c2c22b513e6883, type: 2}
   dialogueColor: {r: 0, g: 0, b: 0, a: 1}
   wantedItem: {fileID: 0}
   givenWantedItem: {fileID: 0}

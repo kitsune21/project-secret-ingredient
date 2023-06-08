@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c39600bb7931074e9a4921489fb4413, type: 3}
-  m_Name: ResponseTonkatsu 1
+  m_Name: ResponseOption3Line3
   m_EditorClassIdentifier: 
-  id: 2
+  id: 3
   speakerId: 2
-  text: Here you go sir!
+  text: The great protector of ramen kitchens.
   playerHasItem: 
   options: []
   giveItem: {fileID: 0}
-  takeItem: {fileID: 11400000, guid: de1b6536f44a2fa4abe409d2960aa0ef, type: 2}
+  takeItem: {fileID: 0}

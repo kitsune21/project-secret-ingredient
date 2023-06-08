@@ -20,6 +20,7 @@ public class DoorController : MonoBehaviour
     public string noItemYet;
     public string hideRoomName;
     public string newCurrentMachi;
+    public Puzzle myPuzzle;
 
     void Start() {
         interactableTextController = GameObject.FindGameObjectWithTag("InteractableText").GetComponent<InteractableTextController>();
@@ -57,6 +58,10 @@ public class DoorController : MonoBehaviour
             isHovering = false;
             float distance = Vector3.Distance(transform.position, player.transform.position);
             if(player.GetComponent<PlayerController>().GetRemainingDistance() <= 0.5f && distance < 4f) {
+                if(myPuzzle && !myPuzzle.completed) {
+                    player.GetComponentInChildren<DialogueController>().showLookAtTextWithNoOverride(noItemYet);
+                    return;
+                }
                 if(myRoom) {
                     if(requiredItem) {
                         if(player.GetComponentInChildren<InventoryController>().CheckIfPlayerHasItem(requiredItem)) {

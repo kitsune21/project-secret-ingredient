@@ -16,6 +16,8 @@ TagManager:
   - music-volume
   - train_map
   - train
+  - gameball
+  - scene
   layers:
   - Default
   - TransparentFX

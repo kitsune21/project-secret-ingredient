@@ -16,6 +16,7 @@ public class NPCCharacterController : MonoBehaviour
     private InteractableTextController interactableTextController;
     public string triggeredText;
     public bool noInteraction;
+    public Puzzle myPuzzle;
 
     void Start() {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -50,6 +51,7 @@ public class NPCCharacterController : MonoBehaviour
                 dragItemController.StopDragging();
                 dialogueController.StartConversation(myCharacter, isGivenWantedItem);
                 interactableTextController.UpdateMyText("");
+                myPuzzle.completed = true;
                 isClicked = false;
             }
         }
@@ -74,6 +76,9 @@ public class NPCCharacterController : MonoBehaviour
     public void StartConversationWithNPC() {
         dialogueController.StartConversation(myCharacter, false);
         interactableTextController.UpdateMyText("");
+        if(myPuzzle) {
+            myPuzzle.completed = true;
+        }
         isClicked = false;
     }
 

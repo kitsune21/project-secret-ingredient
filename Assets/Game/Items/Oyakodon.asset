@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 25a4f68e3a57b654caf99f3fa0beb060, type: 3}
-  m_Name: New Item
+  m_Name: Oyakodon
   m_EditorClassIdentifier: 
-  id: 15
-  itemName: Suspicious Tonkatsu
-  description: Tonkatsu with a sleeping pill inside.
-  onHoldText: Tonkatsu with a sleeping pill inside.
+  id: 21
+  itemName: Oyakodon
+  description: A delicous bowl of oyakodon.
+  onHoldText: A delicous bowl of oyakodon.
   image: {fileID: 0}
   permanent: 0

@@ -15,6 +15,7 @@ public class ObjectController : MonoBehaviour {
     private PlayerStateController playerState;
     public Puzzle myPuzzle;
     public NPCCharacterController characterToTrigger;
+    public GameObject triggerLocation;
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
@@ -134,7 +135,7 @@ public class ObjectController : MonoBehaviour {
     private void handleCompletePuzzle() {
         myPuzzle.completed = true;
         if(characterToTrigger) {
-            characterToTrigger.TriggerCharacter(transform.position);
+            characterToTrigger.TriggerCharacter(triggerLocation.transform.position);
         }
         if(myPuzzle.giveItem) {
             player.GetComponentInChildren<InventoryController>().AddItem(myPuzzle.giveItem, "Picked up ");

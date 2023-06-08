@@ -34,6 +34,7 @@ public class SceneTrigger : MonoBehaviour
                 character1.StartConversationWithNPC();
                 player.SetNewDestinationVector(other.transform.position);
                 isWatchingScene = true;
+                Debug.Log("should stop");
             }
         }
     }

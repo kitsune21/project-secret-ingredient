@@ -17,5 +17,5 @@ MonoBehaviour:
   text: Here you go sir!
   playerHasItem: 
   options: []
-  giveItem: {fileID: 0}
+  giveItem: {fileID: 11400000, guid: 53b377a7e4d01194db6f88f93c37bfdf, type: 2}
   takeItem: {fileID: 11400000, guid: de1b6536f44a2fa4abe409d2960aa0ef, type: 2}
