@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 628c0f9be0a805b45a070a675caa071a, type: 3}
-  m_Name: GetPassedTheGuard
+  m_Name: GetSamuraiName
   m_EditorClassIdentifier: 
-  id: 6
-  description: Get passed the guard.
+  id: 10
+  description: Learn the samurai's name.
   requiredItem: {fileID: 0}
   giveItem: {fileID: 0}
   requiredPuzzles: []
-  completed: 1
+  completed: 0
   failText: 
   finalPuzzle: 0

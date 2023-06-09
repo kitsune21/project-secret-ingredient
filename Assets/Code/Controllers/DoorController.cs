@@ -44,6 +44,9 @@ public class DoorController : MonoBehaviour
     }
 
     void Update() {
+        if(myRoom == null) {
+            return;
+        }
         if (isHovering)
         {
             interactableTextController.UpdateMyText(onHoverText);
@@ -105,6 +108,9 @@ public class DoorController : MonoBehaviour
                             player.GetComponent<PlayerController>().GetPlayerStateController().UpdatePlayerState(PlayerState.InDialogue);
                             player.GetComponentInChildren<DialogueController>().PutOnUniformDialogue();
                         }
+                    }
+                    if(myRoom.roomName == "Kitchen") {
+                        player.GetComponentInChildren<DialogueController>().RunFinalDialogue();
                     }
                 }
             }

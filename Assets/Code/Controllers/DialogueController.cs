@@ -265,4 +265,20 @@ public class DialogueController : MonoBehaviour
         playerCharacter.allDialogues.Add(finalDialogue);
         StartConversation(playerCharacter, false, null);
     }
+
+    public void StartConversationNoSpecialStuff(Dialogue newDialogue)
+    {
+        StopAllCoroutines();
+        optionsTextPanel.SetActive(false);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
+        playerState.UpdatePlayerState(PlayerState.InDialogue);
+        currentDialogue = newDialogue;
+        if(currentDialogue) {
+            clearText();
+            dialogueTextObject.SetActive(true);
+            currentLineIndex = 0;
+            DisplayCurrentLine();
+        }
+    }
 }

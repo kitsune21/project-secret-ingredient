@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 628c0f9be0a805b45a070a675caa071a, type: 3}
-  m_Name: GetPassedTheGuard
+  m_Script: {fileID: 11500000, guid: 7ea25e5049479354994eb2f997038e03, type: 3}
+  m_Name: NoFood
   m_EditorClassIdentifier: 
-  id: 6
-  description: Get passed the guard.
-  requiredItem: {fileID: 0}
-  giveItem: {fileID: 0}
-  requiredPuzzles: []
-  completed: 1
-  failText: 
-  finalPuzzle: 0
+  id: 1
+  lines:
+  - {fileID: 11400000, guid: 995908c3e0d21a34c865974f3dc59120, type: 2}
+  finishedThisOne: 0
+  onlyUseOnce: 0
+  overWriteDialogueAfterThisOne: 0
+  finalDialogue: 0

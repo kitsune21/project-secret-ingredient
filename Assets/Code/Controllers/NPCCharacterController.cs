@@ -83,9 +83,9 @@ public class NPCCharacterController : MonoBehaviour
 
     public void StartConversationWithNPC() {
         if(assemblePuzzle && assemblePuzzle.completed) {
-            player.GetComponent<PlayerController>().SetNewDestination(finalPlayerPos);
-            Camera.main.GetComponent<CameraController>().UpdateStartLoction(finalCameraPos);
-            dialogueController.RunFinalDialogue();
+            // player.GetComponent<PlayerController>().SetNewDestination(finalPlayerPos);
+            // Camera.main.GetComponent<CameraController>().UpdateStartLoction(finalCameraPos);
+            // dialogueController.RunFinalDialogue();
         } else {
             dialogueController.StartConversation(myCharacter, false, this);
             interactableTextController.UpdateMyText("");
