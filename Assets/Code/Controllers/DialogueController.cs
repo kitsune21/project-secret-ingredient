@@ -22,11 +22,19 @@ public class DialogueController : MonoBehaviour
     public GameController gameController;
     public GameObject hintText;
     public NPCCharacterController myNPC;
+    public Character playerCharacter;
+    public Dialogue assembleFood;
+    public Dialogue putOnUniform;
+    public Puzzle assemblePuzzle;
+    public Dialogue finalDialogue;
 
     void Start() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerState = player.GetComponent<PlayerController>().GetPlayerStateController();
         allowOverride = true;
+        playerCharacter.allDialogues.Clear();
+        playerCharacter.allDialogues.Add(assembleFood);
+        assemblePuzzle.completed = false;
     }
 
     void Update() {
@@ -69,6 +77,7 @@ public class DialogueController : MonoBehaviour
     
     private void DisplayCurrentLine()
     {
+        playerState.UpdatePlayerState(PlayerState.InDialogue);
         if(currentDialogue.onlyUseOnce) {
             currentDialogue.finishedThisOne = true;
         }
@@ -103,6 +112,7 @@ public class DialogueController : MonoBehaviour
     
     private void AdvanceToNextLine()
     {
+        playerState.UpdatePlayerState(PlayerState.InDialogue);
         currentLineIndex++;
         StopAllCoroutines();
         if(hintText) {
@@ -164,6 +174,9 @@ public class DialogueController : MonoBehaviour
         playerState.UpdatePlayerState(PlayerState.Playing);
         ClearOptions();
         optionsTextPanel.SetActive(false);
+        if(currentDialogue.finalDialogue) {
+            playerState.UpdatePlayerState(PlayerState.Victory);
+        }
     }
 
     private void ClearOptions() {
@@ -236,5 +249,23 @@ public class DialogueController : MonoBehaviour
 
     private float calculateDialogueDuration(string text) {
         return ((startBuffer + durationLength * text.Length) / 1000) * gameController.GetTextSpeed();
+    }
+
+    public void RunAssembleDialogue() {
+        StartConversation(playerCharacter, false, null);
+        assemblePuzzle.completed = true;
+        GameObject.Find("MusicController").GetComponent<MusicController>().loopClip("Credits");
+    }
+
+    public void PutOnUniformDialogue() {
+        playerCharacter.allDialogues.Clear();
+        playerCharacter.allDialogues.Add(putOnUniform);
+        StartConversation(playerCharacter, false, null);
+    }
+
+    public void RunFinalDialogue() {
+        playerCharacter.allDialogues.Clear();
+        playerCharacter.allDialogues.Add(finalDialogue);
+        StartConversation(playerCharacter, false, null);
     }
 }

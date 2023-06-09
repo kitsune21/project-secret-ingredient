@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: IkebukuroBackAlley
   m_EditorClassIdentifier: 
   id: 3
-  roomName: Back Alley
+  roomName: Side Street
   cameraStartingPoint: {fileID: 0}

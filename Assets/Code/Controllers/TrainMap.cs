@@ -53,6 +53,9 @@ public class TrainMap : MonoBehaviour
             player.currentMachi = newMachi;
         }
         if(newMachi == "ikebukuro") {
+            if(player.GetComponentInChildren<InventoryController>().CheckHasAllRequiredItems()) {
+                player.GetComponentInChildren<DialogueController>().RunAssembleDialogue();
+            }
             player.SetNewDestination(ikebukuro);
             player.currentMachi = newMachi;
         }

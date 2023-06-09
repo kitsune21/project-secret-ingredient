@@ -18,6 +18,9 @@ public class NPCCharacterController : MonoBehaviour
     public bool noInteraction;
     public Puzzle myPuzzle;
     public Dialogue overwriteDialogueObj;
+    public Puzzle assemblePuzzle;
+    public Transform finalCameraPos;
+    public Transform finalPlayerPos;
 
     void Start() {
         player = GameObject.Find("Player").GetComponent<PlayerController>();
@@ -79,10 +82,17 @@ public class NPCCharacterController : MonoBehaviour
     }
 
     public void StartConversationWithNPC() {
-        dialogueController.StartConversation(myCharacter, false, this);
-        interactableTextController.UpdateMyText("");
-        if(myPuzzle) {
-            myPuzzle.completed = true;
+        if(assemblePuzzle && assemblePuzzle.completed) {
+            player.GetComponent<PlayerController>().SetNewDestination(finalPlayerPos);
+            Camera.main.GetComponent<CameraController>().UpdateStartLoction(finalCameraPos);
+            dialogueController.RunFinalDialogue();
+        } else {
+            dialogueController.StartConversation(myCharacter, false, this);
+            interactableTextController.UpdateMyText("");
+            if(myPuzzle) {
+                myPuzzle.completed = true;
+            }
+
         }
         isClicked = false;
     }

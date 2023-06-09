@@ -15,6 +15,7 @@ public class InventoryController : MonoBehaviour
     public GameObject dragItem;
     private PlayerStateController playerState;
     public NotificationController notificationController;
+    public List<Item> requiredItems = new List<Item>();
 
     void Start() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -94,5 +95,30 @@ public class InventoryController : MonoBehaviour
 
     public void CloseInventory() {
         inventoryPanel.SetActive(false);
+    }
+
+    public bool CheckHasAllRequiredItems() {
+        int hasRequiredItemCount = 0;
+        foreach(Item item in currentItems) {
+            foreach(Item requiredItem in requiredItems) {
+                if(item.id == requiredItem.id) {
+                    hasRequiredItemCount += 1;
+                }
+            }
+        }
+
+        if(hasRequiredItemCount == requiredItems.Count) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public bool CheckIfHasUniform() {
+        if(CheckIfPlayerHasItem(requiredItems[2])) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

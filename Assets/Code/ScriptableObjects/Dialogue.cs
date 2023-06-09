@@ -8,6 +8,7 @@ public class Dialogue : ScriptableObject
     public bool finishedThisOne;
     public bool onlyUseOnce;
     public bool overWriteDialogueAfterThisOne;
+    public bool finalDialogue;
     
     public DialogueLine GetLine(int index)
     {

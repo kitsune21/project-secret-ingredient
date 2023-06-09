@@ -94,6 +94,18 @@ public class DoorController : MonoBehaviour
                     if(newCurrentMachi.Length > 0) {
                         player.GetComponent<PlayerController>().currentMachi = newCurrentMachi;
                     }
+                    if(myRoom.roomName == "Ikebukuro") {
+                        if(player.GetComponentInChildren<InventoryController>().CheckHasAllRequiredItems()) {
+                            player.GetComponent<PlayerController>().GetPlayerStateController().UpdatePlayerState(PlayerState.InDialogue);
+                            player.GetComponentInChildren<DialogueController>().RunAssembleDialogue();
+                        }
+                    }
+                    if(myRoom.roomName == "Side Street") {
+                        if(player.GetComponentInChildren<InventoryController>().CheckIfHasUniform()) {
+                            player.GetComponent<PlayerController>().GetPlayerStateController().UpdatePlayerState(PlayerState.InDialogue);
+                            player.GetComponentInChildren<DialogueController>().PutOnUniformDialogue();
+                        }
+                    }
                 }
             }
         }

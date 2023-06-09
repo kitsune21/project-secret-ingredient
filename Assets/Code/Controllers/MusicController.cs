@@ -71,7 +71,7 @@ public class MusicController : MonoBehaviour
 
     public void loopClip(string clip)
     {
-        if(clip == currentClip?.clipName) {
+        if(clip == currentClip?.clipName || currentClip?.clipName == "Credits") {
             return;
         }
         currentClip = stringToClip(clip);
@@ -129,7 +129,7 @@ public class MusicController : MonoBehaviour
     }
 
     public void crossFadeClip(string clip) {
-        if(clip.Length == 0 || clip == currentClip?.clipName) {
+        if(clip.Length == 0 || clip == currentClip?.clipName || currentClip?.clipName == "Credits") {
             return;
         }
 
@@ -170,5 +170,9 @@ public class MusicController : MonoBehaviour
 
             audioPlayer2.Stop();
         }
+    }
+
+    public void ResetPlayer() {
+        currentClip = null;
     }
 }

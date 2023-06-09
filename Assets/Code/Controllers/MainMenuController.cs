@@ -28,6 +28,10 @@ public class MainMenuController : MonoBehaviour
         inventoryPanelAnimator = inventoryPanel.GetComponent<Animator>();
         StartCoroutine(HintTimer(2f));
         inventoryIcon.GetComponent<Image>().color = blankColor;
+        if(GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().isClipPlaying("Credits")) {
+            GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().ResetPlayer();
+            GameObject.FindGameObjectWithTag("music").GetComponent<MusicController>().crossFadeClip("Menu");
+        }
     }
 
     void Update()
