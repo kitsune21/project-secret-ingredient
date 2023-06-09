@@ -90,7 +90,6 @@ public class DialogueController : MonoBehaviour
             playerText.text = currentLine.text;
         } else {
             otherText.text = currentLine.text;
-            otherText.color = characterObject.dialogueColor;
         }
         if(currentLine.options.Length > 0) {
             displayOptions(currentLine);
@@ -136,7 +135,6 @@ public class DialogueController : MonoBehaviour
     }
 
     private void clearText() { 
-        otherText.color = Color.white;
         playerText.text = "";
         otherText.text = "";
     }
@@ -219,7 +217,6 @@ public class DialogueController : MonoBehaviour
         optionsTextPanel.SetActive(false);
         clearText();
         otherText.text = textToShow;
-        otherText.color = npcCharacter.dialogueColor;
         float dialogueDuration = calculateDialogueDuration(textToShow);
         StartCoroutine(DisplayLookAtText(dialogueDuration));
     }

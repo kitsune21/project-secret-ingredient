@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   speakerId: 0
-  text: Hey uncle, I need your help.
+  text: Hey auntie, I need your help.
   playerHasItem: 
   options: []
   giveItem: {fileID: 0}

@@ -624,12 +624,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8799203308589898674, guid: 85e54d88a4222c841bf714329ebe250e, type: 3}
       propertyPath: songs.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8799203308589898674, guid: 85e54d88a4222c841bf714329ebe250e, type: 3}
       propertyPath: songs.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: dbb3b6dffcae07f4bafa026f5dc812c7, type: 2}
+    - target: {fileID: 8799203308589898674, guid: 85e54d88a4222c841bf714329ebe250e, type: 3}
+      propertyPath: songs.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d81f592ec95d664fbce0fe07ad5d54e, type: 2}
     - target: {fileID: 8799203308589898675, guid: 85e54d88a4222c841bf714329ebe250e, type: 3}
       propertyPath: m_Name
       value: MusicController
